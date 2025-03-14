@@ -12,7 +12,7 @@ export const TextGenerateEffect = ({
 }) => {
   const [scope, animate] = useAnimate();
   let wordsArray = words.split(" ");
-  
+
   useEffect(() => {
     if (playAnimation) {
       animate("span", {
@@ -47,7 +47,7 @@ export const TextGenerateEffect = ({
   return (
     <div className={cn("font-bold", className)}>
       <div className="mt-4">
-        <div className="dark:text-white text-black text-2xl leading-snug tracking-wide">
+        <div className="dark:text-white text-black text-2xl leading-snug tracking-wide" style={{ lineHeight: '2' }}> {/* Adjust line height here */}
           {renderWords()}
         </div>
       </div>
