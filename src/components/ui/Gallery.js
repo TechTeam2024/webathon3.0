@@ -21,7 +21,7 @@ const data = [
 export default function Gallery() {
   return (
     <div className="absolute mt-40 inset-0 flex flex-col items-center justify-start bg-black text-white overflow-y-auto h-screen">
-      <h1 className="text-3xl font-bold mb-4">Gallery</h1>
+      <h1 className="text-5xl font-webathon font-bold mb-4">Gallery</h1>
       <Masonry data={data} />
     </div>
   );

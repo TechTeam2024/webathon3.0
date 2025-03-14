@@ -1,6 +1,6 @@
 import { useState, useEffect, useMemo, useRef } from "react";
 import { useTransition, a } from "@react-spring/web";
-import { GlowingEffect } from "./GlowingEffect"; // Import the glow effect component
+import { GlowingEffect } from "./GlowingEffect"; // Using your custom glow effect
 
 function Masonry({ data }) {
   const [columns, setColumns] = useState(2);
@@ -60,26 +60,30 @@ function Masonry({ data }) {
   });
 
   return (
-    <div ref={ref} className="relative w-full " style={{ height: Math.max(...heights) }}>
+    <div ref={ref} className="relative w-full" style={{ height: Math.max(...heights) }}>
       {transitions((style, item) => (
         <a.div
           key={item.id}
           style={style}
           className="absolute p-[15px] [will-change:transform,width,height,opacity]"
         >
-          <div className="relative w-full h-full">
-            {/* Apply the GlowingEffect */}
-            <GlowingEffect color="rgba(0, 255, 255, 0.6)" spread={50} proximity={120}>
-            <div className="p-6 bg-gray-800 text-white rounded-lg">
-                ✨ Glowing Effect Box ✨
-            </div>
-            </GlowingEffect>
-
-
+          <div className="relative w-full h-full group">
+            {/* Glowing Effect on Hover */}
+            <GlowingEffect
+              glow={true}
+              blur={5}
+              spread={50}
+              proximity={120}
+              variant="white" // White/silver glow
+              className="transition-opacity duration-300 opacity-0 group-hover:opacity-100"
+            />
 
             {/* Image Box */}
             <div
-              className="relative w-full h-full overflow-hidden uppercase text-[10px] leading-[10px] rounded-[4px] shadow-[0px_10px_50px_-10px_rgba(0,0,0,0.2)] transition duration-300 ease hover:scale-110"
+              className="relative w-full h-full overflow-hidden uppercase text-[10px] leading-[10px] 
+                         rounded-[4px] shadow-[0px_10px_50px_-10px_rgba(0,0,0,0.2)] transition duration-300 ease 
+                         hover:scale-105 hover:shadow-[0_0_20px_silver] border-2 border-transparent 
+                         hover:border-gray-300"
               style={{
                 backgroundColor: "#ffffff",
                 backgroundImage: `url(${item.image})`,

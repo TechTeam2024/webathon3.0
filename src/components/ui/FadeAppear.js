@@ -29,7 +29,8 @@ const WebathonTitle = ({ onComplete }) => {
   );
 
   return (
-    <div className="font-bold text-center text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl">
+    <div className="font-bold text-center text-[clamp(3rem, 8vw, 10rem)]">
+
       {letters.map((letter, index) => (
         <animated.span
           key={index}

@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { motion, useAnimation } from "framer-motion";
 
 const CircularText = ({
@@ -8,22 +8,37 @@ const CircularText = ({
   imageSrc,
   imageSize = 80,
 }) => {
+  const [isMobile, setIsMobile] = useState(false);
   const letters = Array.from(text);
   const controls = useAnimation();
   const radius = 70; // Distance from center
 
   useEffect(() => {
-    controls.start({
-      rotate: 360,
-      transition: {
-        from: 0,
-        to: 360,
-        ease: "linear",
-        duration: spinDuration,
-        repeat: Infinity,
-      },
-    });
-  }, [spinDuration, controls]);
+    const updateSize = () => {
+      setIsMobile(window.innerWidth < 640);
+    };
+
+    updateSize();
+    window.addEventListener("resize", updateSize);
+    return () => window.removeEventListener("resize", updateSize);
+  }, []);
+
+  useEffect(() => {
+    if (!isMobile) {
+      controls.start({
+        rotate: 360,
+        transition: {
+          from: 0,
+          to: 360,
+          ease: "linear",
+          duration: spinDuration,
+          repeat: Infinity,
+        },
+      });
+    }
+  }, [spinDuration, controls, isMobile]);
+
+  if (isMobile) return null; // Hide component on mobile screens
 
   return (
     <div className={`relative mx-auto w-[180px] h-[180px] ${className}`}>

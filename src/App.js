@@ -1,90 +1,118 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
+import { BrowserRouter } from "react-router-dom";
 import { BackgroundLines } from "./components/ui/background-lines";
 import CircularText from "./components/ui/circular-text";
-import SplitText from "./components/ui/SplitText";
-import DockNav from "./components/ui/docknav2"; 
-import { Home, Image, Users, Mail, BookOpen, Info } from "lucide-react";
-import Tagline from "./components/ui/Tagline";
-import Gallery from "./components/ui/Gallery"; // Import the Gallery component
+import DockNav from "./components/ui/nav3";
+import Gallery from "./components/ui/Gallery";
 import HeaderAnimation from "./components/ui/HeaderAnimation";
-function App() {
-  const [showVersion, setShowVersion] = useState(false);
-  const [activeView, setActiveView] = useState("home"); // State to track which view to show
+import Tagline from "./components/ui/Tagline";
+import SlantedCard from "./components/ui/cardHover";
+import { TextGenerateEffect } from "./components/ui/TextGenerateEffect"; // Import your TextGenerateEffect component
 
-  const handleAnimationComplete = () => {
-    console.log("All letters have animated!");
-    setTimeout(() => setShowVersion(true), 500);
-  };
+function App() {
+  const [activeView, setActiveView] = useState("home");
+  const [animateText, setAnimateText] = useState(false);
+  const textSectionRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setAnimateText(true);
+        } else {
+          setAnimateText(false); // Optional: reset animation when out of view
+        }
+      },
+      {
+        threshold: 0.1, // Trigger when 10% of the element is visible
+      }
+    );
+
+    if (textSectionRef.current) {
+      observer.observe(textSectionRef.current);
+    }
+
+    return () => {
+      if (textSectionRef.current) {
+        observer.unobserve(textSectionRef.current);
+      }
+    };
+  }, [textSectionRef]);
 
   return (
-    <div className="relative flex items-center justify-center h-screen w-full bg-black text-white overflow-hidden">
-      <BackgroundLines />
+    <BrowserRouter>
+      <div className="relative w-full bg-black text-white overflow-hidden">
+        {/* Background Animated Lines */}
+        <BackgroundLines />
 
-      {/* ✅ Always Visible CircularText (Ensured Higher z-index) */}
-      <div className="absolute top-5 left-1/2 transform -translate-x-1/2 sm:top-5 sm:right-5 sm:left-auto sm:translate-x-0 z-50">
-        <CircularText text="ACM . VNRVJIET ." spinDuration={10} imageSrc="/ACMlogo.png" />
-      </div>
+        {/* Circular Text (Always Visible) */}
+        <div className="absolute top-5 right-5 sm:top-8 sm:right-8 z-10">
+          <CircularText text="ACM . VNRVJIET . WEBATHON . " spinDuration={10} imageSrc="/ACMlogo.png" />
+        </div>
 
-      {/* ✅ Conditionally Render Home or Gallery */}
-      <div className="absolute inset-0 flex justify-center items-center w-full h-full">
-        {activeView === "home" ? (
+        {/* Conditional Rendering for Different Views */}
+        {activeView === "gallery" ? (
+          <div className="w-full h-screen flex items-center justify-center bg-black">
+            <Gallery />
+          </div>
+        ) : (
           <>
-            {/* Centered Animated Heading */}
-            <div className="absolute z-10 font-bold text-center mt-10 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex items-center">
-            {/* <SplitText
-            text="WEBATHON 3.0"
-            className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-webathon font-bold"
-            delay={100}
-            animationFrom={{ opacity: 0, transform: "translate3d(0,50px,0)" }}
-            animationTo={{ opacity: 1, transform: "translate3d(0,0,0)" }}
-            easing="easeOutCubic"
-            threshold={0.2}
-            rootMargin="-50px"
-            onLetterAnimationComplete={handleAnimationComplete}
-          /> */}
-          <HeaderAnimation
-            text="WEBATHON 3.0"
-            className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-webathon font-bold"
-            delay={100}
-            animationFrom={{ opacity: 0, transform: "translate3d(0,50px,0)" }}
-            animationTo={{ opacity: 1, transform: "translate3d(0,0,0)" }}
-            easing="easeOutCubic"
-            threshold={0.2}
-            rootMargin="-50px"
-            onLetterAnimationComplete={handleAnimationComplete}
-          />
+            {/* Hero Section */}
+            <div className="absolute top-0 left-0 w-full h-[70vh] flex flex-col items-center justify-center text-center p-0 m-0 sm:mt-20 md:mt-32">
+              <div className="z-10 font-bold">
+                <HeaderAnimation
+                  text="WEBATHON 3.0"
+                  className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-webathon font-bold"
+                  delay={100}
+                  animationFrom={{ opacity: 0, transform: "translate3d(0,20px,0)" }}
+                  animationTo={{ opacity: 1, transform: "translate3d(0,0,0)" }}
+                  easing="easeOutCubic"
+                />
+              </div>
 
+              <div className="mt-10 flex flex-col md:flex-row items-center justify-center space-y-3 md:space-y-0 gap-x-2 md:gap-x-5">
+                <h1 className="font-tagline text-[clamp(1.5rem,5vw,3rem)] font-semibold">Where You</h1>
+                <Tagline texts={["Design", "Develop", "Deploy"]} className="text-[clamp(1.5rem,5vw,3rem)] font-tagline" />
+              </div>
             </div>
 
-            {/* Responsive Tagline Section */}
-            <div className="absolute font-tagline mt-20 top-[50%] left-1/2 transform -translate-x-1/2 
-                flex flex-col md:flex-row items-center justify-center text-center 
-                space-y-3 md:space-y-0 gap-x-2 md:gap-x-5">
-            <h1 className="text-[clamp(1.5rem,5vw,3rem)] font-semibold">Where You</h1>
-            <Tagline texts={["Design", "Develop", "Deploy"]} className="text-[clamp(1.5rem,5vw,3rem)]" />
-          </div>
-
+            {/* Previous Editions Section */}
+            <div id="previous-editions" className="flex flex-col justify-center items-center h-screen">
+              <h1 className="font-tagline text-[clamp(1.5rem,5vw,3rem)] font-semibold text-center mb-6">
+                Previous Editions
+              </h1>
+              <SlantedCard />
+            </div>
           </>
-        ) : (
-          <Gallery /> // Show the Gallery when activeView is "gallery"
         )}
-      </div>
 
-      {/* Sticky DockNav at the bottom */}
-      <DockNav
-        items={[
-          { icon: <Home />, label: "Home", onClick: () => setActiveView("home") },
-          { icon: <BookOpen />, label: "Previous Edition", onClick: () => console.log("Previous Edition clicked") }, 
-          { icon: <Info />, label: "About Us", onClick: () => console.log("About Us clicked") }, 
-          { icon: <Mail />, label: "Contact", onClick: () => console.log("Contact clicked") }, 
-          { icon: <Image />, label: "Gallery", onClick: () => setActiveView("gallery") },
-          { icon: <Users />, label: "Jury Evaluation", onClick: () => console.log("Jury clicked") },
-          
-        ]}
-        registerButton={true} // 👈 Added a prop for the Register Button
+        {/* Text Generate Effect Section */}
+        
+    <div ref={textSectionRef} className="flex flex-col mb-20 font-tagline justify-center items-center h-[20vh] mx-auto w-[50vw]">
+      <h1 id="about" className="font-tagline text-[clamp(1.5rem,5vw,3rem)] font-semibold text-center mb-6">About us</h1>
+      <TextGenerateEffect 
+        words='" Webathon, organized by ACM, is an immersive event that fosters collaboration and innovation in web development. Participants gain hands-on experience, learn from industry experts, and enhance their skills through real-world projects. This opportunity not only boosts confidence but also equips aspiring developers with essential tools for success in the tech industry. "'
+        className="text-center font-about" 
+        duration={0.5} 
+        playAnimation={animateText} // Pass the animation state
       />
-
     </div>
+
+
+        {/* Navigation Bar (Always Visible) */}
+        <DockNav
+          items={[
+            { label: "Home", link: "/", onClick: () => setActiveView("home") },
+            { label: "Past Editions", link: "/past-editions", onClick: () => setActiveView("previous-editions") },
+            { label: "About", link: "/about", onClick: () => console.log("About clicked") },
+            { label: "Contact Us", link: "/contact", onClick: () => console.log("Contact Us clicked") },
+            { label: "Gallery", link: "/gallery", onClick: () => setActiveView("gallery") },
+            { label: "Jury Evaluation", link: "/jury", onClick: () => console.log("Jury Evaluation clicked") },
+          ]}
+          registerButton={true}
+        />
+      </div>
+    </BrowserRouter>
   );
 }
 

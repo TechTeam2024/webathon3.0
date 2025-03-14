@@ -34,9 +34,10 @@ const SplitText = ({
   const spring = useSpring({
     from: animationFrom,
     to: inView ? animationTo : animationFrom,
-    config: { tension: 70, friction: 40 }, // ⏳ Lower tension & higher friction = slower
+    config: { tension: 40, friction: 60 }, // Adjusted values for slower animation
     onRest: onAnimationComplete,
   });
+  
   
 
   return (
