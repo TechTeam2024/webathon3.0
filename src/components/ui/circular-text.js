@@ -1,118 +1,69 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { motion, useAnimation } from "framer-motion";
-
-
-const getRotationTransition = (duration, from, loop = true) => ({
-  from: from,
-  to: from + 360,
-  ease: "linear",
-  duration: duration,
-  type: "tween",
-  repeat: loop ? Infinity : 0,
-});
-
-const getTransition = (duration, from) => ({
-  rotate: getRotationTransition(duration, from),
-  scale: {
-    type: "spring",
-    damping: 20,
-    stiffness: 300,
-  },
-});
 
 const CircularText = ({
   text,
   spinDuration = 20,
-  onHover = "speedUp",
   className = "",
+  imageSrc,
+  imageSize = 80,
 }) => {
   const letters = Array.from(text);
   const controls = useAnimation();
-  const [currentRotation, setCurrentRotation] = useState(0);
+  const radius = 70; // Distance from center
 
   useEffect(() => {
     controls.start({
-      rotate: currentRotation + 360,
-      scale: 1,
-      transition: getTransition(spinDuration, currentRotation),
+      rotate: 360,
+      transition: {
+        from: 0,
+        to: 360,
+        ease: "linear",
+        duration: spinDuration,
+        repeat: Infinity,
+      },
     });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [spinDuration, controls, onHover, text]);
-
-  const handleHoverStart = () => {
-    if (!onHover) return;
-    switch (onHover) {
-      case "slowDown":
-        controls.start({
-          rotate: currentRotation + 360,
-          scale: 1,
-          transition: getTransition(spinDuration * 2, currentRotation),
-        });
-        break;
-      case "speedUp":
-        controls.start({
-          rotate: currentRotation + 360,
-          scale: 1,
-          transition: getTransition(spinDuration / 4, currentRotation),
-        });
-        break;
-      case "pause":
-        controls.start({
-          rotate: currentRotation,
-          scale: 1,
-          transition: {
-            rotate: { type: "spring", damping: 20, stiffness: 300 },
-            scale: { type: "spring", damping: 20, stiffness: 300 },
-          },
-        });
-        break;
-      case "goBonkers":
-        controls.start({
-          rotate: currentRotation + 360,
-          scale: 0.8,
-          transition: getTransition(spinDuration / 20, currentRotation),
-        });
-        break;
-      default:
-        break;
-    }
-  };
-
-  const handleHoverEnd = () => {
-    controls.start({
-      rotate: currentRotation + 360,
-      scale: 1,
-      transition: getTransition(spinDuration, currentRotation),
-    });
-  };
+  }, [spinDuration, controls]);
 
   return (
-    <motion.div
-      initial={{ rotate: 0 }}
-      className={`mx-auto rounded-full w-[150px] h-[150px] text-white font-black text-center cursor-pointer origin-center ${className}`}
-      animate={controls}
-      onUpdate={(latest) => setCurrentRotation(Number(latest.rotate))}
-      onMouseEnter={handleHoverStart}
-      onMouseLeave={handleHoverEnd}
-    >
-      {letters.map((letter, i) => {
-        const rotation = (360 / letters.length) * i;
-        const factor = Number((Math.PI / letters.length).toFixed(0));
-        const x = factor * i;
-        const y = factor * i;
-        const transform = `rotateZ(${rotation}deg) translate3d(${x}px, ${y}px, 0)`;
+    <div className={`relative mx-auto w-[180px] h-[180px] ${className}`}>
+      {/* Fixed Centered Image */}
+      {imageSrc && (
+        <img
+          src={imageSrc}
+          alt="Center Logo"
+          className="absolute inset-0 m-auto"
+          style={{ width: imageSize, height: imageSize }}
+        />
+      )}
 
-        return (
-          <span
-            key={i}
-            className="absolute inline-block inset-0 text-2xl transition-all duration-500 ease-[cubic-bezier(0,0,0,1)]"
-            style={{ transform, WebkitTransform: transform }}
-          >
-            {letter}
-          </span>
-        );
-      })}
-    </motion.div>
+      {/* Rotating Text Container */}
+      <motion.div
+        animate={controls}
+        className="absolute inset-0 flex items-center justify-center"
+      >
+        {letters.map((letter, i) => {
+          const angle = (360 / letters.length) * i; // Angle for each letter
+          const radian = (Math.PI / 180) * angle;
+          const x = Math.cos(radian) * radius;
+          const y = Math.sin(radian) * radius;
+
+          return (
+            <span
+              key={i}
+              className="absolute text-lg font-bold"
+              style={{
+                transform: `translate(${x}px, ${y}px) rotate(${angle + 90}deg)`, 
+                transformOrigin: "center",
+                whiteSpace: "nowrap",
+              }}
+            >
+              {letter}
+            </span>
+          );
+        })}
+      </motion.div>
+    </div>
   );
 };
 
