@@ -40,7 +40,7 @@ const SplitText = ({
   });
 
   return (
-    <p ref={ref} className={`overflow-hidden inline-flex ${className}`}>
+    <p ref={ref} className={`overflow-hidden bg-black w-full flex justify-center  ${className}`}>
       {trail.map((style, index) => (
         <animated.span
           key={index}

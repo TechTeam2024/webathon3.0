@@ -51,7 +51,7 @@ const RotatingText = forwardRef((props, ref) => {
   }, [currentTextIndex, texts.length, rotationInterval, auto, handleIndexChange]);
 
   return (
-    <div className="relative flex justify-center items-center">
+    <div className="relative w-full flex justify-center items-center">
       <button
         className={cn(
           "px-6 py-3 text-white font-bold text-lg rounded-full shadow-lg bg-gradient-to-r from-blue-500 to-purple-600 transition-all duration-300 transform hover:scale-105",

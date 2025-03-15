@@ -221,7 +221,8 @@ const TestimonialCarousel = () => {
         <h2 className="text-lg sm:text-2xl md:text-3xl font-garamond font-bold text-center mb-2 sm:mb-4">Why Webathon? Hear It from the Experts!</h2>
         <p className="text-base sm:text-lg md:text-xl font-tagline text-center mb-6 md:mb-12 font-['DM_Sans',sans-serif]">Real Stories, Real impact - be part of the Future!</p>
      
-        <div className="relative overflow-hidden w-screen max-w-full mt-4 md:mt-8">
+        <div className="relative overflow-hidden w-full max-w-[90vw] mt-4 md:mt-8">
+
           {/* Fade left edge */}
           <div className="absolute left-0 top-0 w-16 md:w-32 h-full bg-gradient-to-r from-black to-transparent z-10"></div>
           

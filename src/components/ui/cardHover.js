@@ -80,13 +80,13 @@ const CardHoverStack = () => {
         <div className="flex gap-4 pt-4">
           <button
             onClick={handlePrev}
-            className="h-12 w-12 rounded-full bg-gray-200 dark:bg-neutral-800 flex items-center justify-center text-black dark:text-white shadow-lg hover:bg-gray-300 dark:hover:bg-neutral-700 transition duration-200 z-10"
+            className="h-12 w-12 rounded-full bg-black dark:bg-neutral-800 flex items-center justify-center text-black dark:text-white shadow-lg hover:bg-gray-300 dark:hover:bg-neutral-700 transition duration-200 z-10"
           >
             <FaArrowLeft size={20} />
           </button>
           <button
             onClick={handleNext}
-            className="h-12 w-12 rounded-full bg-gray-200 dark:bg-neutral-800 flex items-center justify-center text-black dark:text-white shadow-lg hover:bg-gray-300 dark:hover:bg-neutral-700 transition duration-200 z-10"
+            className="h-12 w-12 rounded-full bg-black dark:bg-neutral-800 flex items-center justify-center text-black dark:text-white shadow-lg hover:bg-gray-300 dark:hover:bg-neutral-700 transition duration-200 z-10"
           >
             <FaArrowRight size={20} />
           </button>
