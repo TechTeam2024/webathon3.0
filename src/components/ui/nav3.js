@@ -1,33 +1,68 @@
-// nav3.js
 "use client";
-
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
-import { HashLink } from 'react-router-hash-link'; // Import HashLink
 import { useEffect, useState } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 
-export default function DockNav({ items, registerButton }) {
-  const [filteredItems, setFilteredItems] = useState(items);
+export default function DockNav() {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const [filteredItems, setFilteredItems] = useState([]);
   const [screenSize, setScreenSize] = useState("desktop");
+
+  const items = [
+    { label: "Home", link: "/" },
+    { label: "Past Editions", link: "/#previous-editions" },
+    { label: "About", link: "/#about" },
+    { label: "Contact Us", link: "/#contact" },
+    { label: "Gallery", link: "/gallery" },
+    { label: "Jury Evaluation", link: "/jury" },
+  ];
 
   useEffect(() => {
     const updateSize = () => {
-      if (window.innerWidth < 640) {
+      if (window.innerWidth < 1024) {
         setScreenSize("mobile");
-        setFilteredItems(items.filter(item => ["Home", "Gallery", "Jury"].includes(item.label)));
-      } else if (window.innerWidth < 1024) {
-        setScreenSize("tablet");
-        setFilteredItems(items.filter(item => ["Home", "Gallery", "Jury"].includes(item.label)));
+        setFilteredItems(items.filter(item => ["Home", "Gallery", "Jury Evaluation"].includes(item.label)));
       } else {
         setScreenSize("desktop");
         setFilteredItems(items);
       }
     };
-    
+
     updateSize();
     window.addEventListener("resize", updateSize);
     return () => window.removeEventListener("resize", updateSize);
-  }, [items]);
+  }, []);
+
+  const handleNavigation = (item) => {
+    if (item.label === "Home") {
+      navigate("/");
+      setTimeout(() => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }, 100);
+    } else if (item.link.startsWith("/#")) {
+      const targetId = item.link.replace("/#", "");
+      const scrollToSection = () => {
+        const targetElement = document.getElementById(targetId);
+        if (targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 80, // Adjust for fixed nav offset
+            behavior: "smooth",
+          });
+        }
+      };
+  
+      if (location.pathname !== "/") {
+        navigate("/");
+        setTimeout(scrollToSection, 300); // Ensure homepage loads before scrolling
+      } else {
+        scrollToSection();
+      }
+    } else {
+      navigate(item.link);
+    }
+  };
+  
 
   return (
     <div className="fixed top-5 left-1/2 transform -translate-x-1/2 z-50">
@@ -38,53 +73,24 @@ export default function DockNav({ items, registerButton }) {
         transition={{ duration: 0.4 }}
       >
         {filteredItems.map((item, index) => (
-          item.label === "About" ? (
-            <HashLink
-              key={index}
-              to="#about" // Use the ID for smooth scrolling
-              scroll={el => el.scrollIntoView({ behavior: 'smooth' })} // Ensure smooth scroll
-              className="text-white text-lg font-medium hover:opacity-80 transition relative"
-            >
-              {item.label}
-            </HashLink>
-          ) : item.label === "Past Editions" ? (
-            <HashLink
-              key={index}
-              to="#previous-editions" // Use the ID for smooth scrolling
-              scroll={el => el.scrollIntoView({ behavior: 'smooth' })} // Ensure smooth scroll
-              className="text-white text-lg font-medium hover:opacity-80 transition relative"
-            >
-              {item.label}
-            </HashLink>
-          ) : (
-            <Link
-              key={index}
-              to={item.link}
-              className="text-white text-lg font-medium hover:opacity-80 transition relative"
-              onClick={(e) => {
-                e.preventDefault();
-                if (item.onClick) {
-                  item.onClick();
-                }
-              }}
-            >
-              {item.label}
-            </Link>
-          )
+          <button 
+            key={index} 
+            className="relative text-white text-lg font-medium transition group"
+            onClick={() => handleNavigation(item)}
+          >
+            {item.label}
+            {/* Light Effect on Hover */}
+            <span className="absolute inset-x-0 w-1/2 mx-auto -bottom-1 h-[2px] bg-gradient-to-r from-transparent via-blue-500 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+          </button>
         ))}
 
-        {registerButton && (
-          <motion.button
-            className="text-xl font-tagline font-medium text-white px-6 py-2 rounded-full hover:opacity-90 transition flex items-center justify-center relative"
-            whileHover={{ scale: 1.1 }}
-            style={{
-              background: "linear-gradient(90deg,rgb(49, 82, 154),rgb(109, 12, 161))", // Violet to Pink gradient
-              border: "2px solid transparent",
-            }}
-          >
-            <span>Register</span>
-          </motion.button>
-        )}
+        {/* Register Button (No Hover Light Effect) */}
+        <button
+          onClick={() => navigate("/register")}
+          className="ml-4 px-5 py-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-full font-semibold text-lg transition transform hover:scale-105 shadow-lg"
+        >
+          Register
+        </button>
       </motion.div>
     </div>
   );

@@ -1,19 +1,16 @@
-import { useSpring, animated } from "@react-spring/web";
+import { useTrail, animated } from "@react-spring/web";
 import { useEffect, useRef, useState } from "react";
 
 const SplitText = ({
-  text = "",
+  text = "WEBATHON 3.0",
   className = "",
   animationFrom = { opacity: 0, transform: "translate3d(0,40px,0)" },
   animationTo = { opacity: 1, transform: "translate3d(0,0,0)" },
-  easing = "easeOutCubic",
   threshold = 0.1,
   rootMargin = "-100px",
-  textAlign = "center",
-  onAnimationComplete,
 }) => {
   const [inView, setInView] = useState(false);
-  const ref = useRef();
+  const ref = useRef(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -26,33 +23,36 @@ const SplitText = ({
       { threshold, rootMargin }
     );
 
-    observer.observe(ref.current);
+    if (ref.current) observer.observe(ref.current);
 
     return () => observer.disconnect();
   }, [threshold, rootMargin]);
 
-  const spring = useSpring({
+  // Split "WEBATHON" into individual letters, and keep "3.0" as a single unit
+  const letters = [..."WEBATHON", "\u00A0", "3.0"]; // "\u00A0" adds a visible space
+
+  const trail = useTrail(letters.length, {
     from: animationFrom,
     to: inView ? animationTo : animationFrom,
-    config: { tension: 40, friction: 60 }, // Adjusted values for slower animation
-    onRest: onAnimationComplete,
+    config: { tension: 100, friction: 20 },
+    delay: (index) => index * 50, // Stagger animation per letter
+    immediate: !inView,
   });
-  
-  
 
   return (
-    <animated.p
-      ref={ref}
-      style={spring}
-      className={`overflow-hidden inline-flex ${className}`}
-    >
-      <span>
-        WEBATHON{" "}
-        <span className="bg-gradient-to-r from-violet-600 to-pink-600 text-transparent bg-clip-text">
-          3.0
-        </span>
-      </span>
-    </animated.p>
+    <p ref={ref} className={`overflow-hidden inline-flex ${className}`}>
+      {trail.map((style, index) => (
+        <animated.span
+          key={index}
+          style={style}
+          className={letters[index] === "3.0" ? 
+            "bg-gradient-to-r from-violet-600 to-pink-600 text-transparent bg-clip-text" 
+            : ""}
+        >
+          {letters[index]}
+        </animated.span>
+      ))}
+    </p>
   );
 };
 

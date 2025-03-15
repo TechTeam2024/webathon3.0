@@ -1,0 +1,209 @@
+body {
+  background-color: #121212;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+  font-family: Arial, sans-serif;
+}
+
+/* Wrapper for all cards */
+.cards-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 50px;
+  max-width: 1800px;
+  margin: 0 auto;
+}
+
+/* Card container */
+.card-container {
+  position: relative;
+  width: 100%;
+  height: 400px; /* Keep original size for large screens */
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  transition: all 0.4s ease;
+  background-color: #121212;
+  color: white;
+  flex: 1 1 300px;
+  max-width: 550px;
+  min-width: 280px;
+}
+
+.card-container:hover {
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+  transform: translateY(-5px);
+}
+
+/* Card image */
+.card-image {
+  width: 100%;
+  height: 100%;
+  transition: opacity 0.3s ease;
+}
+
+.card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Hover effect */
+.card-hover-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.card-container:hover .card-image {
+  opacity: 0;
+}
+
+.card-container:hover .card-hover-content {
+  opacity: 1;
+}
+
+/* Text inside the hover card */
+.card-hover-text {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  background-color: #1e1e1e;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.card-hover-text h3 {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+.card-hover-text p {
+  font-size: 0.9rem;
+  color: #e0e0e0;
+  line-height: 1.5;
+  max-width: 80%;
+}
+
+/* Vertical text on the right */
+.vertical-text-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 45px;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 0;
+}
+
+.vertical-letter {
+  color: #e0e0e0;
+  font-weight: bold;
+  font-size: 1rem;
+  text-transform: uppercase;
+  margin: 2px 0;
+}
+
+.version-char {
+  color: #00bcd4;
+}
+
+/* Responsive adjustments for tablets */
+@media (max-width: 1024px) {
+  .cards-wrapper {
+    gap: 40px;
+  }
+
+  .card-container {
+    flex: 1 1 100%;
+    height: 350px; /* Slightly smaller for tablets */
+    max-width: 480px;
+  }
+
+  .card-hover-text p {
+    max-width: 75%;
+    font-size: 0.85rem;
+  }
+
+  .vertical-text-container {
+    width: 40px;
+  }
+
+  .vertical-letter {
+    font-size: 0.9rem;
+  }
+}
+
+/* Responsive adjustments for mobile screens */
+@media (max-width: 768px) {
+  .cards-wrapper {
+    gap: 30px;
+  }
+
+  .card-container {
+    height: 300px; /* Smaller on mobile */
+    max-width: 350px;
+  }
+
+  .card-hover-text h3 {
+    font-size: 1.3rem;
+  }
+
+  .card-hover-text p {
+    max-width: 70%;
+    font-size: 0.8rem;
+  }
+
+  .vertical-text-container {
+    width: 35px;
+  }
+
+  .vertical-letter {
+    font-size: 0.8rem;
+  }
+}
+
+/* Even smaller for very small screens */
+@media (max-width: 480px) {
+  .cards-wrapper {
+    gap: 20px;
+  }
+
+  .card-container {
+    height: 280px;
+    max-width: 320px;
+  }
+
+  .card-hover-text h3 {
+    font-size: 1.2rem;
+  }
+
+  .card-hover-text p {
+    max-width: 65%;
+    font-size: 0.75rem;
+  }
+
+  .vertical-text-container {
+    width: 30px;
+  }
+
+  .vertical-letter {
+    font-size: 0.75rem;
+  }
+}

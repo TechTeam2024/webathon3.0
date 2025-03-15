@@ -1,10 +1,10 @@
 import React from "react";
-import AnimatedTestimonials from "./AnimatedTestimonials"; // Ensure the correct path
+import AnimatedTestimonials from "./AnimatedTestimonials"; // Ensure correct path
 
 const PreviousEditions = () => {
   const testimonials = [
     {
-      src: "/poster.png",
+      src: process.env.PUBLIC_URL +"/poster.png",
       name: "Webathon 1.0",
       quote: "A pioneering web development event focused on innovation, collaboration, and showcasing skills in creating impactful web solutions.",
     },
@@ -16,9 +16,9 @@ const PreviousEditions = () => {
   ];
 
   return (
-    <div className="flex flex-col items-center justify-center text-center font-tagline px-4 sm:px-8 md:px-12 lg:px-16 xl:px-20 w-full">
-      <h1 className="text-[clamp(1.5rem,5vw,3rem)] font-semibold mb-6">Previous Editions</h1>
-      <div className="w-full max-w-4xl">
+    <div className="flex flex-col items-center justify-center text-center font-tagline px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 w-full">
+      {/* Animated Testimonials Component with Updated Layout */}
+      <div className="w-full max-w-screen-md flex flex-col items-center">
         <AnimatedTestimonials testimonials={testimonials} autoplay={true} />
       </div>
     </div>
