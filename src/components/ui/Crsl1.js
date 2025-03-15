@@ -3,11 +3,10 @@ import { motion } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const images = [
-  "https://t4.ftcdn.net/jpg/04/39/89/01/360_F_439890152_sYbPxa1ANTSKcZuUsKzRAf9O7bJ1Tx5B.jpg",
-  "https://i.pinimg.com/736x/69/60/b1/6960b13a890d098b33ded139169f233e.jpg",
-  "https://www.shutterstock.com/shutterstock/videos/1094514863/thumb/1.jpg?ip=x480",
-  "https://preview.redd.it/g1suljqucih61.jpg?width=640&crop=smart&auto=webp&s=5e5c5e8cf52db2b4c399af269c25251db9c7f4c1",
-  "https://comicbook.com/wp-content/uploads/sites/4/2024/04/9d93e8f2-9e48-408c-894f-9d7182489a57.jpg"
+  "/WEB9.png",
+  "/WEB10.png",
+  "/WEB8.png",
+  "/WEB7.png",
 ];
 
 

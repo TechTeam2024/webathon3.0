@@ -218,8 +218,8 @@ const TestimonialCarousel = () => {
   return (
     <div className="w-full relative bg-black text-white flex items-center justify-center py-8 sm:py-12">
       <div className="w-full max-w-4xl mx-auto px-2 sm:px-4">
-        <h2 className="text-lg sm:text-2xl md:text-3xl font-bold text-center mb-2 sm:mb-4">Why Webathon? Hear It from the Experts!</h2>
-        <p className="text-base sm:text-lg md:text-xl text-center mb-6 md:mb-12 font-['DM_Sans',sans-serif]">Real Stories, Real impact - be part of the Future!</p>
+        <h2 className="text-lg sm:text-2xl md:text-3xl font-garamond font-bold text-center mb-2 sm:mb-4">Why Webathon? Hear It from the Experts!</h2>
+        <p className="text-base sm:text-lg md:text-xl font-tagline text-center mb-6 md:mb-12 font-['DM_Sans',sans-serif]">Real Stories, Real impact - be part of the Future!</p>
      
         <div className="relative overflow-hidden w-screen max-w-full mt-4 md:mt-8">
           {/* Fade left edge */}

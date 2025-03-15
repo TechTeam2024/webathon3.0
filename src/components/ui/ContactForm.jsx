@@ -62,13 +62,13 @@ const ContactForm = () => {
   };
 
   return (
-    <div className="min-h-screen relative z-0 flex items-center justify-center px-4 py-12">
+    <div className="min-h-screen font-about mt-80 relative z-0 flex items-center justify-center px-4 py-12">
       <div className="max-w-6xl w-full overflow-hidden flex flex-col md:flex-row">
         {/* Form Section */}
         <div className="w-full md:w-1/2 p-8 bg-black">
           <div className="space-y-6">
             <div className="relative">
-              <h1 className="text-3xl font-bold text-white mb-2">Contact Us</h1>
+              <h1 className="text-4xl font-garamond font-bold text-white mb-2">Contact Us</h1>
               <div className="h-1 w-12 bg-indigo-500 rounded-full"></div>
             </div>
             

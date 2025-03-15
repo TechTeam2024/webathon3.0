@@ -86,9 +86,14 @@ const Gallery = () => {
               <img
                 src={`${image.url}?auto=format&fit=crop&w=800&q=80`}
                 alt={image.alt}
-                className="w-full h-auto shadow-md mb-1 "
+                className="w-full h-auto shadow-md mb-1"
                 loading="lazy"
+                onError={(e) => {
+                  console.error(`Failed to load image: ${image.url}`);
+                  e.target.src = "/fallback-image.jpg"; // Replace with a valid fallback image
+                }}
               />
+
             </motion.div>
           ))}
         </div>

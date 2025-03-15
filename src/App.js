@@ -63,14 +63,14 @@ function Home() {
 
       {/* Previous Editions */}
       <div id="previous-editions" className="relative z-0 flex flex-col mt-[1100px] justify-center items-center h-auto py-10 px-4 sm:px-6 md:px-8">
-        <h1 className="font-tagline text-[clamp(1.5rem,5vw,3rem)] font-semibold text-center mb-6">Previous Editions</h1>
+        <h1 className="bg-gradient-to-r from-blue-200 to-cyan-800 bg-clip-text text-transparent font-garamond text-[clamp(1.5rem,5vw,3rem)] font-semibold text-center mb-6">Previous Editions</h1>
         <PrevEditions />
       </div>
 
       
       {/* About Us */}
-      <div ref={textSectionRef} id="about" className="relative z-0 flex mt-40 flex-col items-center justify-center text-center mx-auto px-4 sm:px-6 md:px-8 w-full max-w-screen-md">
-        <h1 className="font-tagline text-[clamp(1.5rem,5vw,3rem)] font-semibold mb-6">About Us</h1>
+      <div ref={textSectionRef} id="about" className="relative z-0 flex mt-[400px] flex-col items-center justify-center text-center mx-auto px-4 sm:px-6 md:px-8 w-full max-w-screen-md">
+        <h1 className="bg-gradient-to-r from-violet-400 to-pink-400 bg-clip-text text-transparent font-garamond text-[clamp(1.5rem,5vw,3rem)] font-semibold mb-6">About Us</h1>
         <TextGenerateEffect 
           words='" Webathon, organized by ACM, fosters collaboration and innovation in web development. Participants gain hands-on experience, learn from experts, and enhance skills through real projects. "' 
           className="text-center font-about text-[clamp(1rem,4vw,1.5rem)] leading-relaxed" 
@@ -79,7 +79,7 @@ function Home() {
         />
       </div>
 
-      <SpsModify className="relative z-0" />
+      <SpsModify className="relative z-0 " />
       <div id="Testimonials" ><TestimonialCarousel className="relative z-0"/></div>
       <div id="contact"><ContactForm /></div>
     </div>
