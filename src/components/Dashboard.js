@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { SubmissionCard } from "./SubmissionCard";
 import { Loading } from "./Loading";
 import { SubmissionModal } from "./SubmissionModal";
+import { Navigate } from "react-router-dom";
 function Dashboard() {
     const [selectedSubmission, setSelectedSubmission] = useState(null);
     const [submissions, setSubmissions] = useState(null)
@@ -11,7 +12,7 @@ function Dashboard() {
     const URL = process.env.REACT_APP_SCRIPT_URL
     useEffect(() => {
         (async () => {
-            const jury = Number(localStorage.getItem("jury")) || 1
+            const jury = Number(localStorage.getItem("jury_no")) || -2
             const response = await axios.get(URL)
             const data = response.data.filter(submission => submission.jury == jury && submission.evaluated == 0)
 
@@ -26,6 +27,7 @@ function Dashboard() {
                     <div className="flex items-center gap-3">
                         <Trophy className="w-8 h-8 text-indigo-600" />
                         <h1 className="text-2xl font-bold text-white">Webathon 3.0 Jury Dashboard</h1>
+                        
                     </div>
                 </div>
             </header>
@@ -40,6 +42,13 @@ function Dashboard() {
                         value={searchTerm}
                         onChange={(e) => setSearchTerm(e.target.value)}
                     />
+                <button className=""
+                    onClick={()=>
+                        {localStorage.clear()
+                           window.location.replace("/jury");
+                        }
+                    }
+                >LOGOUT</button>
                 </div>
                 {/* <div className="flex items-center justify-end">
                         <label className="flex items-center cursor-pointer">
