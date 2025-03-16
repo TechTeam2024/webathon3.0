@@ -13,6 +13,7 @@ import ContactForm from "./components/ui/ContactForm";
 import SpsModify from "./components/ui/SpsModify";
 import PrevEditions from "./components/ui/PrevEditions";
 import Dashboard from "./components/Dashboard";
+import LoginPage from "./components/ui/JuryLogin";
 
 function Home() {
   const [animateText, setAnimateText] = useState(false);
@@ -98,6 +99,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/jury" element={<LoginPage />} />
         </Routes>
 
         <DockNav />
