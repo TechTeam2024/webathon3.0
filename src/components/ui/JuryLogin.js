@@ -1,10 +1,21 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const LoginPage = () => {
     const [accessKey, setAccessKey] = useState('');
     const [isLoading, setIsLoading] = useState(false);
     const [showAnimation, setShowAnimation] = useState(false);
+    const navigate = useNavigate();
+    const [error, setError] = useState(false);
     const inputRef = useRef(null);
+
+    useEffect(() => {
+        setTimeout(() => {
+            setShowAnimation(true);
+            
+        }, 100);
+    }, []);
 
     useEffect(() => {
         setTimeout(() => {
@@ -12,13 +23,27 @@ const LoginPage = () => {
         }, 100);
     }, []);
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         setIsLoading(true);
-        console.log(accessKey);
-        setTimeout(() => {
-            setIsLoading(false);
-        }, 2000);
+        setError(false);
+
+        try {
+            const data = await axios.post('https://webathon-login-bzctymbhk-yashwanths-projects-d977ee6e.vercel.app', {
+                accessKey
+            });
+
+            if (data.success) {
+                navigate('/dashboard'); // Redirect to Dashboard
+            } else {
+                setError(true);
+            }
+        } catch (error) {
+            console.error("Error during login:", error);
+            setError(true);
+        }
+
+        setIsLoading(false);
     };
 
     return (
