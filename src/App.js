@@ -12,6 +12,7 @@ import TestimonialCarousel from "./components/ui/TestimonalCarousel";
 import ContactForm from "./components/ui/ContactForm";
 import SpsModify from "./components/ui/SpsModify";
 import PrevEditions from "./components/ui/PrevEditions";
+import Dashboard from "./components/Dashboard";
 
 function Home() {
   const [animateText, setAnimateText] = useState(false);
@@ -70,16 +71,16 @@ function Home() {
         <h1 className="bg-gradient-to-r from-violet-400 to-pink-400 bg-clip-text text-transparent font-garamond text-[clamp(1.5rem,5vw,3rem)] font-semibold mb-6 sm:mb-4">
           About Us
         </h1>
-        <TextGenerateEffect 
-          words='" Webathon, organized by ACM, fosters collaboration and innovation in web development. Participants gain hands-on experience, learn from experts, and enhance skills through real projects. "' 
-          className="text-center font-about text-[clamp(1rem,4vw,1.5rem)] leading-relaxed" 
-          duration={0.5} 
+        <TextGenerateEffect
+          words='" Webathon, organized by ACM, fosters collaboration and innovation in web development. Participants gain hands-on experience, learn from experts, and enhance skills through real projects. "'
+          className="text-center font-about text-[clamp(1rem,4vw,1.5rem)] leading-relaxed"
+          duration={0.5}
           playAnimation={animateText}
         />
       </div>
 
       <SpsModify className="relative z-0 " />
-      <div id="Testimonials"><TestimonialCarousel className="relative z-0"/></div>
+      <div id="Testimonials"><TestimonialCarousel className="relative z-0" /></div>
       <div id="contact"><ContactForm /></div>
     </div>
   );
@@ -96,8 +97,9 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/gallery" element={<Gallery />} />
+          <Route path="/dashboard" element={<Dashboard />} />
         </Routes>
-        
+
         <DockNav />
       </div>
     </Router>
