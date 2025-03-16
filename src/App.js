@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes,useLocation } from "react-router-dom";
 import { BackgroundLines } from "./components/ui/background-lines";
 import CircularText from "./components/ui/circular-text";
 import DockNav from "./components/ui/nav3";
@@ -14,10 +14,12 @@ import SpsModify from "./components/ui/SpsModify";
 import PrevEditions from "./components/ui/PrevEditions";
 import Dashboard from "./components/Dashboard";
 import LoginPage from "./components/ui/JuryLogin";
+import Footer from "./components/ui/Footer";
 
 function Home() {
   const [animateText, setAnimateText] = useState(false);
   const textSectionRef = useRef(null);
+  
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -34,7 +36,7 @@ function Home() {
 
   return (
     <div className="relative w-full min-h-screen bg-black m-0 text-white flex flex-col overflow-hidden">
-      <BackgroundLines className={"fixed w-full bg-black inset-0 -z-5"} />
+      <BackgroundLines className={"fixed w-full bg-black inset-0 "} />
 
       <div className="fixed top-5 bg-black right-5 sm:top-8 sm:right-8 z-10">
         <CircularText text="ACM . VNRVJIET . WEBATHON . " spinDuration={10} imageSrc="/ACMlogo.png" />
@@ -68,22 +70,23 @@ function Home() {
       </div>
 
       {/* About Us */}
-      <div ref={textSectionRef} id="about" className="relative z-0 flex pt-20 flex-col items-center justify-center text-center mt-80 mx-auto px-4 sm:px-3 md:px-8 w-full max-w-screen-md">
+      <div id="about" className="relative z-0 flex pt-20 flex-col items-center justify-center text-center mt-80 mx-auto px-4 sm:px-3 md:px-8 w-full max-w-screen-md">
         <h1 className="bg-gradient-to-r from-violet-400 to-pink-400 bg-clip-text text-transparent font-garamond text-[clamp(1.5rem,5vw,3rem)] font-semibold mb-6 sm:mb-4">
           About Us
         </h1>
-        <TextGenerateEffect
-          words='" Webathon, organized by ACM, fosters collaboration and innovation in web development. Participants gain hands-on experience, learn from experts, and enhance skills through real projects. "'
-          className="text-center font-about text-[clamp(1rem,4vw,1.5rem)] leading-relaxed"
-          duration={0.5}
-          playAnimation={animateText}
-        />
+        <p className="text-center font-about text-[clamp(1rem,4vw,1.5rem)] leading-relaxed">
+          "Webathon, organized by ACM, fosters collaboration and innovation in web development. Participants gain hands-on experience, learn from experts, and enhance skills through real projects."
+        </p>
       </div>
+
 
       <SpsModify className="relative z-0 " />
       <div id="Testimonials"><TestimonialCarousel className="relative z-0" /></div>
       <div id="contact"><ContactForm /></div>
+      
     </div>
+
+
   );
 }
 
@@ -101,7 +104,7 @@ function App() {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/jury" element={<LoginPage />} />
         </Routes>
-
+        <Footer className="w-full"/>
         <DockNav />
       </div>
     </Router>
