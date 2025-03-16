@@ -42,6 +42,7 @@ const Gallery = () => {
   return (
     <section className="w-full m-0 py-16 bg-black text-white overflow-hidden">
       <div className="container overflow-hidden mx-auto px-8">
+        <p className="text-white text-xl">Hi</p>
       {windowWidth < 640 && (
         <>
         <h1 className="text-center text-3xl md:text-5xl lg:text-7xl font-bold mb-4">WEBATHON 3.0</h1>
