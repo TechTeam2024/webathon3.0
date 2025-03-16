@@ -6,14 +6,14 @@ function PrevEditions() {
   const cardData = [
     {
       id: 1,
-      image: "https://acmwcc.netlify.app/assets/WCC%204.0%20FINAL-min-DGrPcSj5.png",
+      image: "/poster1.svg",
       title: "Previous Webathon",
       description: "This is some dummy text about the previous webathon edition. It was a great success with many participants from around the world. The event featured amazing speakers and innovative projects.",
       version: "1.0"
     },
     {
       id: 2,
-      image: "https://acmwcc.netlify.app/assets/WCC%204.0%20FINAL-min-DGrPcSj5.png",
+      image: "/poster2.svg",
       title: "Previous Webathon",
       description: "The second edition brought together developers and designers in a 48-hour coding marathon. Participants created innovative solutions for real-world problems and networked with industry professionals.",
       version: "2.0"

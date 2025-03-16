@@ -131,10 +131,11 @@ body {
   }
 
   .card-container {
-    flex: 1 1 100%;
-    height: 350px; /* Slightly smaller for tablets */
-    max-width: 480px;
-  }
+    height: auto; /* Remove fixed height */
+    aspect-ratio: 2 / 3; /* Maintain aspect ratio */
+    max-width: 90%; /* Adjust for mobile */
+}
+
 
   .card-hover-text p {
     max-width: 75%;
@@ -186,7 +187,7 @@ body {
   }
 
   .card-container {
-    height: 280px;
+    height: 400px;
     max-width: 320px;
   }
 
