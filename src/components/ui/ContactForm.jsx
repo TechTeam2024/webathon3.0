@@ -62,7 +62,7 @@ const ContactForm = () => {
   };
 
   return (
-    <div className="min-h-screen font-about mt-80 relative z-0 flex items-center justify-center px-4 py-12">
+    <div className="min-h-screen font-about relative z-0 flex items-center justify-center px-4">
       <div className="max-w-6xl w-full overflow-hidden flex flex-col md:flex-row">
         {/* Form Section */}
         <div className="w-full md:w-1/2 p-8 bg-black">
