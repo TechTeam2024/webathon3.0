@@ -4,7 +4,6 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 40px 20px;
   font-family: Arial, sans-serif;
 }
 
@@ -22,7 +21,8 @@ body {
 .card-container {
   position: relative;
   width: 100%;
-  height: 400px; /* Keep original size for large screens */
+  height: 400px;
+  /* Keep original size for large screens */
   overflow: hidden;
   border-radius: 8px;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
@@ -131,10 +131,13 @@ body {
   }
 
   .card-container {
-    height: auto; /* Remove fixed height */
-    aspect-ratio: 2 / 3; /* Maintain aspect ratio */
-    max-width: 90%; /* Adjust for mobile */
-}
+    height: auto;
+    /* Remove fixed height */
+    aspect-ratio: 2 / 3;
+    /* Maintain aspect ratio */
+    max-width: 90%;
+    /* Adjust for mobile */
+  }
 
 
   .card-hover-text p {
@@ -158,7 +161,8 @@ body {
   }
 
   .card-container {
-    height: 300px; /* Smaller on mobile */
+    height: 300px;
+    /* Smaller on mobile */
     max-width: 350px;
   }
 

@@ -8,10 +8,10 @@ const ContactForm = () => {
     email: '',
     message: ''
   });
-  
+
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
-  
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(prevState => ({
@@ -19,35 +19,35 @@ const ContactForm = () => {
       [name]: value
     }));
   };
-  
+
   const handleSubmit = (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-  
- 
+
+
     console.log("Form submission data:", formData);
-  
-  
+
+
     emailjs
       .send(
-        "service_uohwufk", 
-        "template_m6cfmqb", 
+        "service_uohwufk",
+        "template_m6cfmqb",
         {
           user_name: formData.name,
           user_email: formData.email,
           message: formData.message,
         },
-        "-F16qdkvZ8HUMiZQq" 
+        "-F16qdkvZ8HUMiZQq"
       )
       .then(
         (result) => {
           console.log("Email successfully sent!", result.text);
-  
+
           setTimeout(() => {
             setIsSubmitting(false);
             setIsSubmitted(true);
             setFormData({ name: "", email: "", message: "" });
-  
+
             setTimeout(() => {
               setIsSubmitted(false);
             }, 3000);
@@ -62,16 +62,16 @@ const ContactForm = () => {
   };
 
   return (
-    <div className="min-h-screen font-about relative z-0 flex items-center justify-center px-4">
+    <div className="min-h-screen font-about mt-80 relative z-0 flex items-center justify-center px-4 py-12">
       <div className="max-w-6xl w-full overflow-hidden flex flex-col md:flex-row">
         {/* Form Section */}
         <div className="w-full md:w-1/2 p-8 bg-black">
           <div className="space-y-6">
             <div className="relative">
-              <h1 className="text-4xl font-garamond font-bold text-white mb-2">Contact Us</h1>
+              <h1 className="text-4xl font-garamond bg-gradient-to-r from-violet-400 to-pink-400 bg-clip-text text-transparent font-bold  mb-2">Contact Us</h1>
               <div className="h-1 w-12 bg-indigo-500 rounded-full"></div>
             </div>
-            
+
             <div className="text-gray-400 space-y-2">
               <div className="flex items-center">
                 <div className="mr-2 text-indigo-500">
@@ -82,7 +82,7 @@ const ContactForm = () => {
                 </div>
                 <a href="mailto:acmvnrvjiet@gmail.com" className="hover:text-indigo-400 transition-colors">acmvnrvjiet@gmail.com</a>
               </div>
-              
+
               <div className="flex items-center">
                 <div className="mr-2 text-indigo-500">
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
@@ -92,7 +92,7 @@ const ContactForm = () => {
                 <a href="tel:8897642106" className="hover:text-indigo-400 transition-colors">+91 9892417444</a>
               </div>
             </div>
-            
+
             {isSubmitted ? (
               <div className="bg-indigo-900/30 p-6 rounded-xl border border-indigo-500/50 text-center animate-pulse">
                 <svg className="w-16 h-16 text-indigo-500 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -124,7 +124,7 @@ const ContactForm = () => {
                     />
                   </div>
                 </div>
-                
+
                 <div className="space-y-2">
                   <label className="block text-gray-300 text-sm font-medium">
                     Email <span className="text-indigo-500">*</span>
@@ -146,7 +146,7 @@ const ContactForm = () => {
                     />
                   </div>
                 </div>
-                
+
                 <div className="space-y-2">
                   <label className="block text-gray-300 text-sm font-medium">
                     Message <span className="text-indigo-500">*</span>
@@ -168,13 +168,12 @@ const ContactForm = () => {
                     ></textarea>
                   </div>
                 </div>
-                
+
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className={`w-full flex items-center justify-center py-3 px-4 rounded-lg text-white font-medium focus:outline-none transition-all duration-300 ${
-                    isSubmitting ? 'bg-indigo-600 cursor-wait' : 'bg-indigo-600 hover:bg-indigo-700 focus:ring-1 focus:ring-indigo-500/50'
-                  }`}
+                  className={`w-full flex items-center justify-center py-3 px-4 rounded-lg text-white font-medium focus:outline-none transition-all duration-300 ${isSubmitting ? 'bg-indigo-600 cursor-wait' : 'bg-indigo-600 hover:bg-indigo-700 focus:ring-1 focus:ring-indigo-500/50'
+                    }`}
                 >
                   {isSubmitting ? (
                     <>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { BrowserRouter as Router, Route, Routes,useLocation } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes, useLocation } from "react-router-dom";
 import { BackgroundLines } from "./components/ui/background-lines";
 import CircularText from "./components/ui/circular-text";
 import DockNav from "./components/ui/nav3";
@@ -19,7 +19,7 @@ import Footer from "./components/ui/Footer";
 function Home() {
   const [animateText, setAnimateText] = useState(false);
   const textSectionRef = useRef(null);
-  
+
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -36,7 +36,7 @@ function Home() {
 
   return (
     <div className="relative w-full min-h-screen bg-black m-0 text-white flex flex-col overflow-hidden">
-      <BackgroundLines className={"fixed w-full bg-black inset-0 "} />
+      <BackgroundLines className={"fixed w-screen bg-black inset-0 "} />
 
       <div className="fixed top-5 bg-black right-5 sm:top-8 sm:right-8 z-10">
         <CircularText text="ACM . VNRVJIET . WEBATHON . " spinDuration={10} imageSrc="/ACMlogo.png" />
@@ -67,6 +67,12 @@ function Home() {
           Previous Editions
         </h1>
         <PrevEditions />
+        <button
+
+          className="ml-4 mt-7 font-about px-5 py-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-full font-semibold text-lg transition transform hover:scale-105 shadow-lg"
+        >
+          Register
+        </button>
       </div>
 
       {/* About Us */}
@@ -83,7 +89,7 @@ function Home() {
       <SpsModify className="relative z-0 " />
       <div id="Testimonials"><TestimonialCarousel className="relative z-0" /></div>
       <div id="contact"><ContactForm /></div>
-      
+
     </div>
 
 
@@ -94,17 +100,20 @@ function Home() {
 function App() {
   return (
     <Router>
-      <div className="relative w-full min-h-screen bg-black text-white overflow-hidden">
-        {/* Global Background */}
-        <BackgroundLines className={"fixed inset-0 -z-5"} />
+      <div className="relative w-screen m-0 p-0  min-h-screen bg-black text-white overflow-hidden">
+        {/* Background Lines stays behind all content */}
+        <BackgroundLines className="fixed inset-0 -z-10" />
 
+        {/* Main Content */}
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/jury" element={<LoginPage />} />
         </Routes>
-        <Footer className="w-full"/>
+
+        {/* Footer and Navigation stay on top */}
+        <Footer className="w-full" />
         <DockNav />
       </div>
     </Router>

@@ -4,6 +4,11 @@ import { motion } from "framer-motion";
 
 const imagesC = [
   "/WEB12.png",
+  "/WEB11.png",
+  "/WEB10.png",
+  "/WEB9.png",
+  "/WEB7.png",
+  "/WEB8.png",
 ];
 
 

@@ -1,13 +1,21 @@
-import React, { useState, useRef, useEffect } from "react";
-import { useNavigate } from "react-router-dom"; // Import useNavigate
+import React, { useState, useRef, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const LoginPage = () => {
-  const [accessKey, setAccessKey] = useState("");
+  const [accessKey, setAccessKey] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [showAnimation, setShowAnimation] = useState(false);
+  const navigate = useNavigate();
   const [errorMessage, setErrorMessage] = useState(""); // Error message state
   const inputRef = useRef(null);
-  const navigate = useNavigate(); // Initialize navigation
+
+  useEffect(() => {
+    setTimeout(() => {
+      setShowAnimation(true);
+
+    }, 100);
+  }, []);
 
   useEffect(() => {
     setTimeout(() => {
@@ -19,7 +27,7 @@ const LoginPage = () => {
     e.preventDefault();
     setIsLoading(true);
     setErrorMessage(""); // Clear previous errors
-  
+
     try {
       const response = await fetch("https://webathon-login.vercel.app/api/login", {
         method: "POST",
@@ -28,11 +36,11 @@ const LoginPage = () => {
         },
         body: JSON.stringify({ accessKey }),
       });
-  
+
       const data = await response.json();
-  
+
       if (data.success) {
-        localStorage.setItem("jury_no",data.jury_no);
+        localStorage.setItem("jury_no", data.jury_no);
         console.log(data);
         window.location.replace("/dashboard");
       } else {
@@ -42,17 +50,16 @@ const LoginPage = () => {
       console.error("Login failed", error);
       setErrorMessage("Server error. Please try again.");
     }
-  
+
     setIsLoading(false);
   };
-  
   return (
     <div className="min-h-screen bg-black flex justify-center items-center p-4">
-      <div className="w-full max-w-4xl bg-[#303030] rounded-2xl shadow-xl overflow-hidden flex flex-col md:flex-row">
+      <div className="w-full max-w-4xl bg-black rounded-2xl shadow-xl overflow-hidden flex flex-col md:flex-row">
         {/* Left content (Form) */}
         <div className="md:w-1/2 p-8 md:p-12">
           <div className={`mb-8 transition-all duration-700 delay-300 transform ${showAnimation ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-10'}`}>
-            <h3 className="text-indigo-300 font-medium">WEBATHON 3.0</h3>
+            <h3 className=" bg-gradient-to-r from-violet-400 to-pink-400 bg-clip-text text-transparent font-medium">WEBATHON 3.0</h3>
             <h1 className="text-slate-100 text-3xl font-bold mt-2">Welcome Jury</h1>
             <p className="text-slate-300 mt-2">Sign in to continue to your dashboard</p>
           </div>
@@ -76,11 +83,10 @@ const LoginPage = () => {
                   required
                   value={accessKey}
                   onChange={(e) => setAccessKey(e.target.value)}
-                  className={`pl-10 w-full bg-[#2a3a4d] border ${errorMessage ? 'border-red-500' : 'border-slate-600'} rounded-lg py-3 px-4 text-slate-300 focus:outline-none focus:ring-2 ${errorMessage ? 'focus:ring-red-500' : 'focus:ring-indigo-500'} transition-all duration-300`}
+                  className="pl-10 w-full bg-[#2a3a4d] border border-slate-600 rounded-lg py-3 px-4 text-slate-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-300"
                   placeholder="Enter your access key"
                 />
               </div>
-              {errorMessage && <p className="text-red-500 text-sm mt-2">{errorMessage}</p>}
             </div>
 
             <div className={`transition-all duration-700 delay-700 transform ${showAnimation ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
@@ -106,10 +112,10 @@ const LoginPage = () => {
         </div>
 
         {/* Right content (Image) */}
-        <div className="md:w-1/2 p-6 flex items-center justify-center bg-[#303030]">
-          <img 
-            src="https://cdni.iconscout.com/illustration/premium/thumb/evaluation-of-company-regulations-illustration-download-in-svg-png-gif-file-formats--business-growth-strategies-rulebook-entrepreneurial-expansion-guidelines-corporate-development-principles-studying-rules-pack-illustrations-8401294.png?f=webp" 
-            alt="Rules illustration" 
+        <div className="md:w-1/2 p-6 flex items-center justify-center bg-black">
+          <img
+            src="https://cdni.iconscout.com/illustration/premium/thumb/evaluation-of-company-regulations-illustration-download-in-svg-png-gif-file-formats--business-growth-strategies-rulebook-entrepreneurial-expansion-guidelines-corporate-development-principles-studying-rules-pack-illustrations-8401294.png?f=webp"
+            alt="Rules illustration"
             className={`max-w-full h-auto transition-all duration-1000 delay-500 transform ${showAnimation ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}`}
             onError={(e) => {
               e.target.onerror = null;

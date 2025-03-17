@@ -106,7 +106,7 @@ export function SubmissionModal({ submission, onClose }) {
                     onClick={onClose}
                     className="absolute top-4 right-4 p-2 rounded-full bg-white shadow-lg hover:bg-gray-100 transition-colors"
                 >
-                    <X size={24} />
+                    <X size={24} color='black' />
                 </button>
 
                 <div className="h-full overflow-y-auto">

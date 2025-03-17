@@ -19,9 +19,9 @@ function SpsModify() {
             />
             <div className="sponsor-hover-text">Sponsor1</div>
           </div>
-          
+
           <div className='sponsor-content text-center md:text-left'>
-            <h2 className="text-4xl bg-gradient-to-r from-violet-400 to-pink-400 bg-clip-text text-transparent font-garamond font-mono tracking-wider mb-3 text-indigo-400">SPONSORED BY</h2>
+            <h2 className="text-5xl bg-gradient-to-r from-violet-400 to-pink-400 bg-clip-text text-transparent font-garamond tracking-wider mb-4 ">Sponsored By</h2>
             <p className="text-gray-400 max-w-2xl font-about mx-auto md:mx-0 mb-2">
               We're proud to partner with these amazing organizations that make our work possible.
             </p>

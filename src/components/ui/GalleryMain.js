@@ -11,6 +11,7 @@ const allImages = [
   { id: 9, url: "/WEB10.png", alt: "City skyline" },
   { id: 7, url: "/WEB8.png", alt: "Nature close-up" },
   { id: 1, url: "/WEB21.jpg", alt: "Architectural detail" },
+  { id: 1, url: "/WEB5.jpg", alt: "Architectural detail" },
 
 ];
 
@@ -37,37 +38,37 @@ const Gallery = () => {
       setImages(allImages);
     }
   }, [windowWidth, currentIndex]);
-  
+
 
   return (
     <section className="w-full m-0 py-16 bg-black text-white overflow-hidden">
       <div className="container overflow-hidden mx-auto px-8">
         <p className="text-white text-xl">Hi</p>
-      {windowWidth < 640 && (
-        <>
-        <h1 className="text-center text-3xl md:text-5xl lg:text-7xl font-bold mb-4">WEBATHON 3.0</h1>
-        <div className="mb-10 w-auto">
-            <Carousel2 />
-        </div>
-        </>
-    )}
-    
-
-          {/* Show description only for medium and larger screens */}
-            {windowWidth >= 640 && (
-        <div className="grid lg:grid-cols-2 gap-8 sm:grid-cols-1">
-          <div className="mb-10 w-auto">
-            <Carousel1/>
-          </div>
-          <div className="max-w-3xl text-center p-20">
+        {windowWidth < 640 && (
+          <>
             <h1 className="text-center text-3xl md:text-5xl lg:text-7xl font-bold mb-4">WEBATHON 3.0</h1>
+            <div className="mb-10 w-auto">
+              <Carousel2 />
+            </div>
+          </>
+        )}
+
+
+        {/* Show description only for medium and larger screens */}
+        {windowWidth >= 640 && (
+          <div className="grid lg:grid-cols-2 gap-8 sm:grid-cols-1">
+            <div className="mb-10 w-auto">
+              <Carousel1 />
+            </div>
+            <div className="max-w-3xl text-center p-20">
+              <h1 className="text-center text-3xl md:text-5xl lg:text-7xl font-bold mb-4">WEBATHON 3.0</h1>
               <p className="md:text-lg text-center text-gray-300">
                 This is the description aligned to the left. It provides additional details about the title in a readable format.
                 Using Tailwind CSS, we ensure proper spacing and responsiveness.
               </p>
+            </div>
           </div>
-        </div>
-            )}
+        )}
 
         {/* Responsive Image Grid */}
         <div className="columns-2 sm:columns-2 md:columns-3 lg:columns-4 gap-4">
@@ -76,12 +77,12 @@ const Gallery = () => {
               key={image.id}
               className="break-inside-avoid mb-4 overflow-hidden "
               initial={{ opacity: 0, y: 50, filter: "drop-shadow(0px 0px 0px rgba(255, 255, 255, 0))" }}  // Start hidden, move up, and no shadow
-              whileInView={{ opacity: 1, y: 0}}  // Show when in viewport
-              whileHover={{ 
+              whileInView={{ opacity: 1, y: 0 }}  // Show when in viewport
+              whileHover={{
                 scale: 1.05,
                 filter: "drop-shadow(0px 0px 10px rgba(255, 255, 255, 0.9))"
-               }}  // Delay for staggered effect
-              transition={{scale:{duration: 0.1},filter:{duration:0.3},duration:0.3, delay: 0.5 }}
+              }}  // Delay for staggered effect
+              transition={{ scale: { duration: 0.1 }, filter: { duration: 0.3 }, duration: 0.3, delay: 0.5 }}
               viewport={{ once: true }}  // Animate only once
             >
               <img
