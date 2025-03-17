@@ -67,12 +67,6 @@ function Home() {
           Previous Editions
         </h1>
         <PrevEditions />
-        <button
-
-          className="ml-4 mt-7 font-about px-5 py-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-full font-semibold text-lg transition transform hover:scale-105 shadow-lg"
-        >
-          Register
-        </button>
       </div>
 
       {/* About Us */}
@@ -83,6 +77,12 @@ function Home() {
         <p className="text-center font-about text-[clamp(1rem,4vw,1.5rem)] leading-relaxed">
           "Webathon, organized by ACM, fosters collaboration and innovation in web development. Participants gain hands-on experience, learn from experts, and enhance skills through real projects."
         </p>
+        <button
+
+          className="ml-4 mt-7 font-about px-5 py-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-full font-semibold text-lg transition transform hover:scale-105 shadow-lg"
+        >
+          Register Now
+        </button>
       </div>
 
 

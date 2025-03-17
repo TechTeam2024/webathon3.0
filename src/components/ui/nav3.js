@@ -64,7 +64,7 @@ export default function DockNav() {
   };
 
   return (
-    <div className="fixed top-5 left-1/2 transform -translate-x-1/2 z-50">
+    <div className="fixed top-5 left-1/2 transform -translate-x-1/2 z-40">
       <motion.div
         className="flex items-center gap-6 px-6 py-3 font-tagline bg-black border border-gray-600 rounded-full shadow-md backdrop-blur-lg"
         initial={{ opacity: 0, y: -10 }}
@@ -72,8 +72,8 @@ export default function DockNav() {
         transition={{ duration: 0.4 }}
       >
         {filteredItems.map((item, index) => (
-          <button 
-            key={index} 
+          <button
+            key={index}
             className="relative text-white text-lg font-medium transition group"
             onClick={() => handleNavigation(item)}
           >

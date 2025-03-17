@@ -131,14 +131,14 @@ export function SubmissionModal({ submission, onClose }) {
                                             </div>
                                             <p className="text-sm text-gray-600 mb-3">{criteria.description}</p>
                                             <input
-                                                type="range"
+                                                type="number"
                                                 id={criteria.id}
                                                 min="0"
                                                 max="10"
                                                 step="1"
                                                 value={getScoreForCriteria(criteria.id)}
                                                 onChange={(e) => handleScoreChange(criteria.id, parseInt(e.target.value, 10))}
-                                                className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-indigo-600"
+                                                className="w-[50px] h-[30px] p-1 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-indigo-600 text-black"
                                             />
                                         </div>
                                     ))}
