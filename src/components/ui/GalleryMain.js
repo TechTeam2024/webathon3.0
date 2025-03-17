@@ -45,7 +45,7 @@ const Gallery = () => {
       <div className="container overflow-hidden mx-auto px-8">
         {windowWidth < 640 && (
           <>
-            <h1 className="text-center text-3xl md:text-5xl lg:text-7xl font-bold mb-4">WEBATHON 3.0</h1>
+            <h1 className="text-center text-3xl md:text-5xl mt-10 lg:text-7xl font-bold mb-4">WEBATHON 3.0</h1>
             <div className="mb-10 w-auto">
               <Carousel2 />
             </div>
