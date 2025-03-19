@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Carousel1 from "./Crsl1";
 import Carousel2 from "./Crsl2";
-import GalleryPreloader from "./GalleryPreloader";
+import GalleryPreloader from "./GalleryPreloader2";
 
 const allImages = [
   { id: 1, url: "https://i.ibb.co/fVvw0PQH/IMG-20250317-WA0006.webp", alt: "Abstract art" },
