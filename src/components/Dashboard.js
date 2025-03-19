@@ -16,6 +16,7 @@ function Dashboard() {
 
   useEffect(() => {
     (async () => {
+      setSubmissions(null);
       jury = localStorage.getItem("jury_no");
       const response = await axios.get(URL);
       const data = response.data.filter((submission) =>
