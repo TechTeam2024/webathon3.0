@@ -44,7 +44,7 @@ function Home() {
 
 
       {/* Hero Section */}
-      <div className="relative z-0 w-full min-h-screen flex flex-col items-center justify-center text-center p-5 sm:mt-20 md:mt-32 lg:mt-40">
+      <div className="relative z-0 w-full min-h-screen flex flex-col items-center justify-center text-center p-5 sm:mt-20 md:mt-32 lg:mt-10">
 
 
         <HeaderAnimation

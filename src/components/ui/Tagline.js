@@ -55,10 +55,14 @@ const RotatingText = forwardRef((props, ref) => {
           "text-white font-bold rounded-full shadow-lg",
           "bg-gradient-to-r from-blue-500 to-purple-600",
           "transition-all duration-300 transform hover:scale-105",
+          "cursor-default", // Ensures default arrow cursor
+          "disabled:cursor-default", // Just in case
           mainClassName
         )}
+        disabled // Disables the button functionality
         {...rest}
       >
+
         <AnimatePresence mode={animatePresenceMode} initial={animatePresenceInitial}>
           <motion.span
             key={currentTextIndex}
