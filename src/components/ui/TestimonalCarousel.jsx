@@ -9,55 +9,26 @@ const TestimonialCarousel = () => {
 
   const testimonials = [
     {
-      name: "Dr. Gibson",
-      designation: "@Professor of Computer Science",
-      content: "The WebSummit’s React workshop was a fantastic experience. Practical demos made complex topics easy to grasp for students."
+      name: "N. Mangathayaru",
+      designation: "Head of department, IT",
+      content: "I commend ACM VNRVJIET for creating such an excellent initiative that provides participants with the skills and confidence needed to excel in industry-level hackathons. I encourage students to utilise this opportunity to enhance their technical expertise."
     },
     {
-      name: "Prof. Virag",
-      designation: "@Head of Design Department",
-      content: "This virtual hackathon platform enhances learning through structured project management and real-time collaboration."
+      name: "Pavani",
+      designation: "Participant",
+      content: "I learnt some new concepts from the problem statement given to me. I understood how real-world challenges faced by startups can be  solved through innovative solutions."
     },
     {
-      name: "Dr. Rui",
-      designation: "@Senior Lecturer in Software Engineering",
-      content: "An engaging developer conference! The sessions were insightful, and networking bridged the gap between academia and industry."
+      name: "Sai charan",
+      designation: "Participant",
+      content: "Team ACM has done a Magnum opus task. All the aspects of the event were executed properly and the mentors helped in further development of my idea."
     },
     {
-      name: "Prof. Vollhard",
-      designation: "@HOD, Information Technology",
-      content: "The event registration system was seamless, providing a smooth experience for both faculty and students attending the conference."
+      name: "Sreenidhi",
+      designation: "Participant",
+      content: "The hackathon was organised well. The mentors they provided were very interactive and they helped us in providing inputs and improving the project in a better way."
     },
-    {
-      name: "Dr. Aisha",
-      designation: "@Associate Professor of Data Science",
-      content: "The GraphQL workshop was interactive and engaging. Hands-on coding challenges kept students motivated throughout the session."
-    },
-    {
-      name: "Prof. Marcus",
-      designation: "@Director of Cloud Computing Research",
-      content: "The virtual event space was innovative. Breakout rooms and networking lounges helped students and faculty connect with experts."
-    },
-    {
-      name: "Dr. Sophia",
-      designation: "@Assistant Professor of Backend Systems",
-      content: "This web-based event offered an immersive learning experience. Interactive discussions made it valuable for academic growth."
-    },
-    {
-      name: "Prof. Daniel",
-      designation: "@Mobile Application Development Expert",
-      content: "Live coding sessions and workshops provided practical insights. Students benefited from direct interaction with industry professionals."
-    },
-    {
-      name: "Dr. Eleanor",
-      designation: "@Professor of UI/UX Design",
-      content: "A well-organized event with structured sessions. Every speaker shared valuable insights relevant to modern design trends."
-    },
-    {
-      name: "Prof. James",
-      designation: "@Principal & Full Stack Development Instructor",
-      content: "The depth of knowledge in each presentation was remarkable. Live demos, discussions, and panels enriched the experience for all."
-    }
+    
   ];
 
 
