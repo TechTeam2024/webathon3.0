@@ -11,13 +11,13 @@ function Dashboard() {
   const [submissions, setSubmissions] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
   const [showEvaluated, setShowEvaluated] = useState(false);
-  let jury;
+  const [jury, setJury] = useState(localStorage.getItem("jury_no"));
   const URL = process.env.REACT_APP_SCRIPT_URL;
 
   useEffect(() => {
     (async () => {
       setSubmissions(null);
-      jury = localStorage.getItem("jury_no");
+      setJury(localStorage.getItem("jury_no"));
       const response = await axios.get(URL);
       const data = response.data.filter((submission) =>
         jury == 0
@@ -107,9 +107,9 @@ function Dashboard() {
 
       {selectedSubmission && (
         <SubmissionModal
-          jury={jury}
           submission={selectedSubmission}
           onClose={() => setSelectedSubmission(null)}
+          jury={jury}
         />
       )}
     </div>
