@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { X, Github, ExternalLink, Users, Save, Send } from "lucide-react";
 // eslint-disable-next-line no-undef
 const URL = process.env.REACT_APP_SCRIPT_URL;
@@ -42,9 +42,14 @@ const SCORING_CRITERIA = [
 
 export function SubmissionModal({ submission, onClose, jury }) {
   const [scores, setScores] = useState(
-    SCORING_CRITERIA.map((criteria) => ({ criteriaId: criteria.id, score: 0 }))
+    SCORING_CRITERIA.map((criteria) => ({ criteriaId: criteria.id, score: 5 }))
   );
-
+  useEffect(() => {
+    let arr = SCORING_CRITERIA.map((criteria) => ({ criteriaId: criteria.id, score: submission[criteria.id] }))
+    setScores(arr)
+    console.log("scores: ", arr)
+    console.log("submissions: ", submission)
+  }, [submission])
   const handleBackdropClick = useCallback(
     (e) => {
       if (e.target === e.currentTarget) {

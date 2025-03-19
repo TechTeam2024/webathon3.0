@@ -24,12 +24,12 @@ function Dashboard() {
             ? submission.evaluated == 1
             : submission.evaluated == 0
           : showEvaluated
-          ? submission.evaluated == 1 && submission.jury == jury
-          : submission.jury == jury && submission.evaluated == 0
+            ? submission.evaluated == 1 && submission.jury == jury
+            : submission.jury == jury && submission.evaluated == 0
       );
       setSubmissions(data);
       console.log(jury);
-      console.log(data);
+      console.log("data: ", data);
     })();
   }, [showEvaluated]);
 
