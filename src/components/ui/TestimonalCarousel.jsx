@@ -27,10 +27,10 @@ const TestimonialCarousel = () => {
       name: "Sreenidhi",
       designation: "Participant",
       content: "The hackathon was organised well. The mentors they provided were very interactive and they helped us in providing inputs and improving the project in a better way."
-    },
+    }
   ];
 
-  // Create an extended array with multiple copies to ensure smooth infinite scrolling
+  // Duplicating the testimonials to ensure seamless looping
   const extendedTestimonials = [...testimonials, ...testimonials, ...testimonials];
 
   // Set up responsive behavior
@@ -55,42 +55,40 @@ const TestimonialCarousel = () => {
     if (!scrollContainer) return;
 
     let animationId;
-    let scrollAmount = 0;
-    // Adjusted scroll speed values from the second snippet
-    const scrollSpeed = isMobile ? 0.7 : 1.1;
+    let lastTimestamp = 0;
+    const scrollSpeed = isMobile ? 0.05 : 0.1; // Further decreased scroll speed
 
-    const recalculateScroll = () => {
-      const cardWidth = isMobile ? 220 : 280;
-      const middleSetStartIndex = testimonials.length;
-      const initialScrollPosition = (middleSetStartIndex * cardWidth) - ((containerWidth - cardWidth) / 2);
+    // Calculate dimensions
+    const cardWidth = isMobile ? 220 : 280;
+    const cardGap = isMobile ? 3 : 7;
+    const itemWidth = cardWidth + cardGap;
 
+    // We'll use this as our loop point - once scrolled past this mark, we'll reset
+    const fullSetWidth = testimonials.length * itemWidth;
 
-      scrollContainer.scrollLeft = initialScrollPosition;
-      scrollAmount = initialScrollPosition;
+    // Start in the middle of the first copy of the testimonials set
+    const initialPosition = fullSetWidth;
+    scrollContainer.scrollLeft = initialPosition;
 
-      return initialScrollPosition;
+    const animate = (timestamp) => {
+      if (!lastTimestamp) lastTimestamp = timestamp;
+      const elapsed = timestamp - lastTimestamp;
+      lastTimestamp = timestamp;
+
+      const currentScroll = scrollContainer.scrollLeft;
+      const newPosition = currentScroll + (scrollSpeed * Math.min(elapsed, 20));
+      scrollContainer.scrollLeft = newPosition;
+
+      // Check if we've scrolled past the first copy and into the second
+      // if (newPosition >= initialPosition + fullSetWidth) {
+      //   // Jump back one set length (to maintain same visual position)
+      //   scrollContainer.scrollLeft = initialPosition;
+      // }
+
+      animationId = requestAnimationFrame(animate);
     };
 
-    const initialScrollPosition = recalculateScroll();
-
-    const scroll = () => {
-      if (!scrollContainer) return;
-
-      scrollAmount += scrollSpeed;
-      scrollContainer.scrollLeft = scrollAmount;
-
-      const middleSetWidth = testimonials.length * (isMobile ? 220 : 280);
-      const maxScroll = initialScrollPosition + middleSetWidth;
-
-      if (scrollAmount >= maxScroll) {
-        scrollAmount = initialScrollPosition;
-        scrollContainer.scrollLeft = scrollAmount;
-      }
-
-      animationId = requestAnimationFrame(scroll);
-    };
-
-    animationId = requestAnimationFrame(scroll);
+    animationId = requestAnimationFrame(animate);
 
     // Add pause on hover functionality
     const handleMouseEnter = () => {
@@ -101,7 +99,8 @@ const TestimonialCarousel = () => {
 
     const handleMouseLeave = () => {
       if (!isMobile) {
-        animationId = requestAnimationFrame(scroll);
+        lastTimestamp = 0; // Reset time tracking
+        animationId = requestAnimationFrame(animate);
       }
     };
 
@@ -111,7 +110,8 @@ const TestimonialCarousel = () => {
     };
 
     const handleTouchEnd = () => {
-      animationId = requestAnimationFrame(scroll);
+      lastTimestamp = 0; // Reset time tracking
+      animationId = requestAnimationFrame(animate);
     };
 
     scrollContainer.addEventListener('mouseenter', handleMouseEnter);
@@ -177,7 +177,7 @@ const TestimonialCarousel = () => {
 
     scrollContainer.addEventListener('scroll', handleScroll);
     // Initial calculation
-    handleScroll();
+    setTimeout(handleScroll, 100); // Small delay to ensure DOM is ready
 
     return () => {
       scrollContainer.removeEventListener('scroll', handleScroll);
@@ -198,8 +198,8 @@ const TestimonialCarousel = () => {
           <div
             ref={scrollRef}
             className="flex gap-3 sm:gap-5 md:gap-7 overflow-x-hidden cursor-grab pb-4 justify-start items-center"
-            style={{ 
-              paddingTop: '20px', 
+            style={{
+              paddingTop: '20px',
               scrollBehavior: 'auto',
               scrollbarWidth: 'none',
               msOverflowStyle: 'none'
