@@ -2,9 +2,8 @@ import axios from "axios";
 import { Search, Trophy } from "lucide-react";
 import { useEffect, useState } from "react";
 import { SubmissionCard } from "./SubmissionCard";
-import { Loading } from "./Loading";
+import GalleryPreloader from "../components/ui/GalleryPreloader2";
 import { SubmissionModal } from "./SubmissionModal";
-import { Navigate } from "react-router-dom";
 
 function Dashboard() {
   const [selectedSubmission, setSelectedSubmission] = useState(null);
@@ -100,7 +99,7 @@ function Dashboard() {
               );
             })
           ) : (
-            <Loading fullScreen />
+            <GalleryPreloader />
           )}
         </div>
       </main>
