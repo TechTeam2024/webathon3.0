@@ -62,6 +62,16 @@ code {
   font-weight: 400;
   font-style: normal;
 }
+.nav3 {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100px; /* Adjust height */
+  z-index: 1000; /* Keep it above all content */
+  background: rgba(0, 0, 0, 0.8); /* Ensure it's visible */
+}
+
 .nav-container {
   display: flex;
   flex-wrap: wrap;
@@ -73,6 +83,16 @@ code {
   font-size: clamp(0.8rem, 1.5vw, 1.2rem) !important; /* Ensures scaling */
   font-weight: 600;
   white-space: nowrap; /* Prevents breaking words */
+}
+/* Ensures content cannot move above the navbar */
+.no-move-zone {
+  position: absolute;
+  top: 90px; /* Adjust this based on the navbar height */
+  width: 100%;
+  height: 1px;
+  background: transparent;
+  pointer-events: none; /* Ensures it doesn't block clicks */
+  z-index: 20;
 }
 
 @media screen and (max-width: 768px), (min-resolution: 144dpi) {

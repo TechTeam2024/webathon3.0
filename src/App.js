@@ -49,7 +49,7 @@ function Home() {
 
         <HeaderAnimation
           text="WEBATHON 3.0"
-          className="text-[clamp(3rem, 6vw, 7rem)]w-full bg-black sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-webathon font-bold"
+          className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl w-full bg-black sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-webathon font-bold"
           delay={100}
           animationFrom={{ opacity: 0, transform: "translate3d(0,20px,0)" }}
           animationTo={{ opacity: 1, transform: "translate3d(0,0,0)" }}
@@ -103,9 +103,12 @@ function Home() {
 function App() {
   return (
     <Router>
-      <div className="relative w-screen m-0 p-0  min-h-screen bg-black text-white overflow-hidden">
+      <div className="relative w-screen m-0 p-0 min-h-screen bg-black text-white overflow-hidden">
         {/* Background Lines stays behind all content */}
         <BackgroundLines className="fixed inset-0 -z-10" />
+
+        {/* Invisible Boundary to Prevent Content from Moving Above */}
+        <div className="absolute top-[90px] w-full h-[1px] bg-transparent z-20 pointer-events-none"></div>
 
         {/* Main Content */}
         <Routes>
@@ -117,10 +120,11 @@ function App() {
 
         {/* Footer and Navigation stay on top */}
         <Footer className="w-full" />
-        <DockNav  />
+        <DockNav />
       </div>
     </Router>
   );
 }
+
 
 export default App;
