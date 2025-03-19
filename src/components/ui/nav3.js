@@ -85,7 +85,7 @@ export default function DockNav() {
 
         {/* Register Button (Always Visible) */}
         <button
-           onClick={() => window.open("https://vnrvjiet.ac.in/", "_blank")}
+           onClick={() => window.open("https://tinyurl.com/WebathonRegistrationForm", "_blank")}
           className="ml-4 px-5 py-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-full font-semibold text-lg transition transform hover:scale-105 shadow-lg"
         >
           Register

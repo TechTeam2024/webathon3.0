@@ -74,10 +74,10 @@ const Gallery = () => {
                 <Carousel1 />
               </div>
               <div className="max-w-3xl text-center p-20">
-                <h1 className="text-center text-3xl md:text-5xl sm:mt-10 lg:text-7xl font-bold mb-4">WEBATHON 3.0</h1>
+                <h1 className="text-center text-2xl md:text-5xl sm:mt-10 lg:text-4xl font-bold mb-4">                Relive the past WEBATHON editions!</h1>
                 <p className="md:text-lg text-center text-gray-300">
-                  This is the description aligned to the left. It provides additional details about the title in a readable format.
-                  Using Tailwind CSS, we ensure proper spacing and responsiveness.
+                Explore the journey of participants as they design, develop, and deploy groundbreaking solutions under expert mentorship. Take a glimpse at the energy, teamwork, and innovation that make WEBATHON an unforgettable experience!
+
                 </p>
               </div>
             </div>
