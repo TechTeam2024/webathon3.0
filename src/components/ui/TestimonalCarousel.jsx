@@ -11,12 +11,12 @@ const TestimonialCarousel = () => {
     {
       name: "N. Mangathayaru",
       designation: "Head of department, IT",
-      content: "I commend ACM VNRVJIET for creating such an excellent initiative that provides participants with the skills and confidence needed to excel in industry-level hackathons. I encourage students to utilise this opportunity to enhance their technical expertise."
+      content: "I commend ACM VNRVJIET for creating such an excellent initiative that provides participants with the skills and confidence needed to excel in industry-level hackathons. I encourage students to utilise this opportunity to enhance their technical expertise."
     },
     {
       name: "Pavani",
       designation: "Participant",
-      content: "I learnt some new concepts from the problem statement given to me. I understood how real-world challenges faced by startups can be  solved through innovative solutions."
+      content: "I learnt some new concepts from the problem statement given to me. I understood how real-world challenges faced by startups can be solved through innovative solutions."
     },
     {
       name: "Sai charan",
@@ -28,14 +28,12 @@ const TestimonialCarousel = () => {
       designation: "Participant",
       content: "The hackathon was organised well. The mentors they provided were very interactive and they helped us in providing inputs and improving the project in a better way."
     },
-    
   ];
 
-
-  // Duplicate testimonials to create a smoother infinite scroll
+  // Create an extended array with multiple copies to ensure smooth infinite scrolling
   const extendedTestimonials = [...testimonials, ...testimonials, ...testimonials];
 
-  // Check if screen is mobile and update container width
+  // Set up responsive behavior
   useEffect(() => {
     const checkMobile = () => {
       const width = window.innerWidth;
@@ -51,27 +49,27 @@ const TestimonialCarousel = () => {
     };
   }, []);
 
-  // auto-scrolling effect
+  // Handle auto-scrolling
   useEffect(() => {
     const scrollContainer = scrollRef.current;
     if (!scrollContainer) return;
 
     let animationId;
     let scrollAmount = 0;
+    // Adjusted scroll speed values from the second snippet
     const scrollSpeed = isMobile ? 0.7 : 1.1;
-
 
     const recalculateScroll = () => {
       const cardWidth = isMobile ? 220 : 280;
       const middleSetStartIndex = testimonials.length;
       const initialScrollPosition = (middleSetStartIndex * cardWidth) - ((containerWidth - cardWidth) / 2);
 
+
       scrollContainer.scrollLeft = initialScrollPosition;
       scrollAmount = initialScrollPosition;
 
       return initialScrollPosition;
     };
-
 
     const initialScrollPosition = recalculateScroll();
 
@@ -81,12 +79,10 @@ const TestimonialCarousel = () => {
       scrollAmount += scrollSpeed;
       scrollContainer.scrollLeft = scrollAmount;
 
-
       const middleSetWidth = testimonials.length * (isMobile ? 220 : 280);
       const maxScroll = initialScrollPosition + middleSetWidth;
 
       if (scrollAmount >= maxScroll) {
-
         scrollAmount = initialScrollPosition;
         scrollContainer.scrollLeft = scrollAmount;
       }
@@ -95,6 +91,8 @@ const TestimonialCarousel = () => {
     };
 
     animationId = requestAnimationFrame(scroll);
+
+    // Add pause on hover functionality
     const handleMouseEnter = () => {
       if (!isMobile) {
         cancelAnimationFrame(animationId);
@@ -151,7 +149,7 @@ const TestimonialCarousel = () => {
     return -1;
   };
 
-  // Update middle card state and card opacities
+  // Update middle card and opacity effects
   useEffect(() => {
     const scrollContainer = scrollRef.current;
     if (!scrollContainer) return;
@@ -193,7 +191,6 @@ const TestimonialCarousel = () => {
         <p className="text-base sm:text-lg md:text-xl font-tagline text-center mb-6 md:mb-12 font-['DM_Sans',sans-serif]">Real Stories, Real impact - be part of the Future!</p>
 
         <div className="relative overflow-hidden w-full max-w-[90vw] mt-4 md:mt-8">
-
           {/* Fade left edge */}
           <div className="absolute left-0 top-0 w-16 md:w-32 h-full bg-gradient-to-r from-black to-transparent z-10"></div>
 
@@ -201,15 +198,20 @@ const TestimonialCarousel = () => {
           <div
             ref={scrollRef}
             className="flex gap-3 sm:gap-5 md:gap-7 overflow-x-hidden cursor-grab pb-4 justify-start items-center"
-            style={{ paddingTop: '20px', scrollBehavior: 'auto' }}
+            style={{ 
+              paddingTop: '20px', 
+              scrollBehavior: 'auto',
+              scrollbarWidth: 'none',
+              msOverflowStyle: 'none'
+            }}
           >
             {extendedTestimonials.map((testimonial, index) => (
               <div
-                key={index}
-                className={`flex-shrink-0 transition-all duration-300 ${index % testimonials.length === middleCardIndex ? 'z-20 scale-105' : ''
-                  }`}
+                key={`testimonial-${index}`}
+                className={`flex-shrink-0 transition-all duration-300 ${
+                  index % testimonials.length === middleCardIndex ? 'z-20 scale-105' : ''
+                }`}
                 style={{
-                  // Removed margin-top and margin-bottom styling to keep cards in a straight line
                   width: isMobile ? '85vw' : 'auto',
                   maxWidth: isMobile ? '280px' : '530px',
                 }}

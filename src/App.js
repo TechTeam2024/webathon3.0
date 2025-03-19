@@ -74,10 +74,10 @@ function Home() {
       {/* About Us */}
       <div id="about" className="relative z-0 flex pt-20 flex-col items-center justify-center text-center mt-80 mx-auto px-4 sm:px-3 md:px-8 w-full max-w-screen-md">
         <h1 className="bg-gradient-to-r from-violet-400 to-pink-400 bg-clip-text text-transparent font-garamond text-[clamp(1.5rem,5vw,3rem)] font-semibold mb-6 sm:mb-4">
-          About Us
+          About Webathon
         </h1>
         <p className="text-center font-about text-[clamp(1rem,4vw,1.5rem)] leading-relaxed">
-          "Webathon, organized by ACM, fosters collaboration and innovation in web development. Participants gain hands-on experience, learn from experts, and enhance skills through real projects."
+          WEBATHON is designed to equip participants for industry-level recruitment drives involving hackathons. With expert mentors guiding teams at every stage, participants gain valuable insights and enhance their development expertise. WEBATHON 3.0, our latest edition, is bigger and better than ever! Centered around the theme 'Design, Develop, Deploy,' it serves as the ultimate platform for encouraging creativity, collaboration, and technical excellence in a dynamic, high-energy environment.
         </p>
         <img className="mt-7 w-1/2" src="/poster1.svg" alt="poster" />
         <button
