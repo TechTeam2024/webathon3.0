@@ -143,9 +143,10 @@ export function SubmissionModal({ submission, onClose, jury }) {
                       <p className="text-sm text-gray-600 mb-3">
                         {criteria.description}
                       </p>
-                      {jury ? (
+                      {jury == 0 ? (
                         <input
                           type="number"
+                          readOnly
                           id={criteria.id}
                           min="0"
                           max="10"
@@ -162,7 +163,6 @@ export function SubmissionModal({ submission, onClose, jury }) {
                       ) : (
                         <input
                           type="number"
-                          readOnly
                           id={criteria.id}
                           min="0"
                           max="10"
@@ -180,7 +180,7 @@ export function SubmissionModal({ submission, onClose, jury }) {
                     </div>
                   ))}
                 </div>
-                {jury && (
+                {jury != 0 && (
                   <div className="mt-8 flex justify-end">
                     <button
                       onClick={handleSubmit}
