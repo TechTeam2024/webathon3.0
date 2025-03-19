@@ -1,4 +1,5 @@
 import Masonry from "./Masonry";
+import { useState, useEffect } from "react";
 const data = [
   { id: 1, image: "/WEB14.png", width: 300, height: 1000 }, 
   { id: 2, image: "/WEB2.png", width: 400, height: 700 }, 
