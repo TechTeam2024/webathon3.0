@@ -23,7 +23,7 @@ function PrevEditions() {
       image: "/poster2.jpg",
       title: "Webathon 2.0",
       description: [
-        "Webathon 2.0",
+        "WEBATHON 2.0",
         "Theme: \"Connect. Collaborate. Create.\"",
         "Round 1: 2nd March 2024",
         "Round 2: 22nd & 23rd March 2024",
