@@ -41,7 +41,7 @@ const CircularText = ({
 
   return (
     <div
-      className={`relative mx-auto ${className}`}
+      className={`relative  mx-auto ${className}`}
       style={{
         width: `${180 * scaleFactor}px`,
         height: `${180 * scaleFactor}px`,
@@ -61,7 +61,7 @@ const CircularText = ({
       )}
 
       {/* Rotating Text */}
-      <motion.div animate={controls} className="absolute inset-0 flex items-center justify-center">
+      <motion.div animate={controls} className="absolute  inset-0 flex items-center justify-center">
         {letters.map((letter, i) => {
           const angle = (360 / letters.length) * i;
           const radian = (Math.PI / 180) * angle;

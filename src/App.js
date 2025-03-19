@@ -38,7 +38,7 @@ function Home() {
     <div className="relative w-full min-h-screen bg-black m-0 text-white flex flex-col overflow-hidden">
       <BackgroundLines className={"fixed w-screen bg-black inset-0 "} />
 
-      <div className="circular-logo fixed top-5 right-5 sm:top-8 sm:right-8 z-10">
+      <div className="circular-logo hidden sm:block fixed top-5 right-5 sm:top-8 sm:right-8 z-10">
   <CircularText text="ACM . VNRVJIET . WEBATHON . " spinDuration={10} imageSrc="/ACMlogo.png" />
 </div>
 
