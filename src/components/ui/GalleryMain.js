@@ -5,14 +5,14 @@ import Carousel2 from "./Crsl2";
 
 const allImages = [
   { id: 1, url: "https://i.ibb.co/fVvw0PQH/IMG-20250317-WA0006.webp", alt: "Abstract art" },
-  { id: 2, url: "https://i.postimg.cc/zLg0k450/IMG-20250317-WA0007.webp", alt: "Mountain landscape" },
-  { id: 3, url: "https://i.postimg.cc/2V0cj42F/IMG-20250317-WA0008.webp", alt: "Abstract art" },
-  { id: 8, url: "https://i.postimg.cc/mhwVVYff/IMG-20250317-WA0013.webp", alt: "Architectural detail" },
-  { id: 4, url: "https://i.postimg.cc/qgdZ1BNn/IMG-20250317-WA0009.webp", alt: "Urban scene" },
+  { id: 2, url: "https://i.postimg.cc/HxxW0rTp/2.jpg", alt: "Mountain landscape" },
+  { id: 12, url: "https://i.postimg.cc/1tVWDG70/IMG-20240324-WA0020.jpg", alt: "Architectural detail" },
+  { id: 3, url: "https://i.postimg.cc/fyb1VdjN/3.jpg", alt: "Abstract art" },
+  { id: 8, url: "https://i.postimg.cc/hv1TWv3Q/1.jpg", alt: "Architectural detail" },
+  { id: 4, url: "https://i.postimg.cc/L8fPcbdc/4.jpg", alt: "Urban scene" },
   { id: 7, url: "https://i.postimg.cc/bYSWfWHW/IMG-20250317-WA0014.webp", alt: "Architectural detail" },
-  { id: 5, url: "https://i.postimg.cc/KRGpy9r8/IMG-20250317-WA0010.webp", alt: "City skyline" },
-  { id: 6, url: "https://i.postimg.cc/mPqmCTxP/IMG-20250317-WA0011.webp", alt: "Nature close-up" },
-
+  { id: 5, url: "https://i.postimg.cc/L5C7MsP8/5.jpg", alt: "City skyline" },
+  { id: 6, url: "https://i.postimg.cc/K8Hczb6K/6.jpg", alt: "Nature close-up" }
 ];
 
 const Gallery = () => {
@@ -41,7 +41,7 @@ const Gallery = () => {
 
 
   return (
-    <section className="w-full m-0 py-16 bg-black text-white overflow-hidden">
+    <section className="w-full mt-10 py-16 bg-black text-white overflow-hidden">
       <div className="container overflow-hidden mx-auto px-8">
         {windowWidth < 640 && (
           <>
