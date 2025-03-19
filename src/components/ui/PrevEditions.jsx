@@ -87,6 +87,9 @@ function PrevEditions() {
                 <div
                   className="vertical-letter version-char"
                   key={`ver-${index}`}
+                  style={{
+                    color: card.version === "2•0" ? "#9ACD32" : "#3498db", 
+                  }}
                 >
                   {char}
                 </div>
