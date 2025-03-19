@@ -38,16 +38,18 @@ function Home() {
     <div className="relative w-full min-h-screen bg-black m-0 text-white flex flex-col overflow-hidden">
       <BackgroundLines className={"fixed w-screen bg-black inset-0 "} />
 
-      <div className="fixed top-5 bg-black right-5 sm:top-8 sm:right-8 z-10">
-        <CircularText text="ACM . VNRVJIET . WEBATHON . " spinDuration={10} imageSrc="/ACMlogo.png" />
-      </div>
+      <div className="circular-logo fixed top-5 right-5 sm:top-8 sm:right-8 z-10">
+  <CircularText text="ACM . VNRVJIET . WEBATHON . " spinDuration={10} imageSrc="/ACMlogo.png" />
+</div>
+
 
       {/* Hero Section */}
-      <div className="relative z-0 w-full min-h-screen flex flex-col items-center justify-center text-center p-0 m-0 sm:mt-20 md:mt-32">
+      <div className="relative z-0 w-full min-h-screen flex flex-col items-center justify-center text-center p-5 sm:mt-20 md:mt-32 lg:mt-40">
+
 
         <HeaderAnimation
           text="WEBATHON 3.0"
-          className="text-5xl w-full bg-black sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-webathon font-bold"
+          className="text-[clamp(3rem, 6vw, 7rem)]w-full bg-black sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-webathon font-bold"
           delay={100}
           animationFrom={{ opacity: 0, transform: "translate3d(0,20px,0)" }}
           animationTo={{ opacity: 1, transform: "translate3d(0,0,0)" }}
@@ -64,7 +66,7 @@ function Home() {
       {/* Previous Editions */}
       <div id="previous-editions" className="relative z-0 flex flex-col pt-20 mt-10 justify-center items-center h-auto py-10 sm:py-6 px-4 sm:px-3 md:px-8">
         <h1 className="bg-gradient-to-r from-violet-400 to-pink-400 bg-clip-text text-transparent font-garamond text-[clamp(1.5rem,5vw,3rem)] font-semibold text-center mb-6 sm:mb-4">
-          Previous Editions
+          Past Editions
         </h1>
         <PrevEditions />
       </div>
@@ -77,7 +79,7 @@ function Home() {
         <p className="text-center font-about text-[clamp(1rem,4vw,1.5rem)] leading-relaxed">
           "Webathon, organized by ACM, fosters collaboration and innovation in web development. Participants gain hands-on experience, learn from experts, and enhance skills through real projects."
         </p>
-        <img className="mt-7" src="/poster1.svg" alt="poster" />
+        <img className="mt-7 w-1/2" src="/poster1.svg" alt="poster" />
         <button
 
           className="ml-4 mt-7 font-about px-5 py-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-full font-semibold text-lg transition transform hover:scale-105 shadow-lg"
@@ -87,8 +89,8 @@ function Home() {
       </div>
 
 
-      <SpsModify className="relative z-0 " />
-      <div id="Testimonials"><TestimonialCarousel className="relative z-0" /></div>
+      {/* <SpsModify className="relative z-0 " /> */}
+      <div id="Testimonials"><TestimonialCarousel className=" relative z-0" /></div>
       <div id="contact"><ContactForm /></div>
 
     </div>
@@ -115,7 +117,7 @@ function App() {
 
         {/* Footer and Navigation stay on top */}
         <Footer className="w-full" />
-        <DockNav />
+        <DockNav  />
       </div>
     </Router>
   );

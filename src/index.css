@@ -62,3 +62,33 @@ code {
   font-weight: 400;
   font-style: normal;
 }
+.nav-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 10px; /* Adjust spacing */
+}
+.nav-text {
+  font-size: clamp(0.8rem, 1.5vw, 1.2rem) !important; /* Ensures scaling */
+  font-weight: 600;
+  white-space: nowrap; /* Prevents breaking words */
+}
+
+@media screen and (max-width: 768px), (min-resolution: 144dpi) {
+  .nav-text {
+    font-size: clamp(0.7rem, 2vw, 1rem) !important;
+  }
+}
+
+@media screen and (min-resolution: 144dpi) {
+  
+  .hero-section {
+    margin-top: 120px !important;
+  }
+
+  .past-editions {
+    margin-top: 80px !important;
+  }
+  
+}

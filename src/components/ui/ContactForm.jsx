@@ -62,7 +62,8 @@ const ContactForm = () => {
   };
 
   return (
-    <div className="min-h-screen font-about mt-80 relative z-0 flex items-center justify-center px-4 py-12">
+    <div className="min-h-screen font-about relative z-0 flex items-center justify-center px-4 py-12 md:px-8 lg:px-16 xl:px-24">
+
       <div className="max-w-6xl w-full overflow-hidden flex flex-col md:flex-row">
         {/* Form Section */}
         <div className="w-full md:w-1/2 p-8 bg-black">
@@ -193,13 +194,14 @@ const ContactForm = () => {
         </div>
         {/* Animation content */}
         <div className="w-full md:w-1/2 flex items-center justify-center bg-black">
-          <DotLottieReact
-            src="https://lottie.host/133d0d0c-c121-4133-9eb8-7061d353fb6a/NyDPUJIFpJ.lottie"
-            loop
-            autoplay
-            className="w-full h-full"
-          />
-        </div>
+  <DotLottieReact
+    src="https://lottie.host/133d0d0c-c121-4133-9eb8-7061d353fb6a/NyDPUJIFpJ.lottie"
+    loop
+    autoplay
+    className="w-4/5 h-4/5 md:w-full md:h-full lg:w-[80%] lg:h-[80%]"
+  />
+</div>
+
       </div>
     </div>
   );

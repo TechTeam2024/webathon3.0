@@ -4,8 +4,6 @@ import {
   forwardRef,
   useCallback,
   useEffect,
-  useImperativeHandle,
-  useMemo,
   useState,
 } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -24,7 +22,6 @@ const RotatingText = forwardRef((props, ref) => {
     animatePresenceMode = "wait",
     animatePresenceInitial = false,
     rotationInterval = 2000,
-    loop = true,
     auto = true,
     onNext,
     mainClassName,
@@ -54,7 +51,10 @@ const RotatingText = forwardRef((props, ref) => {
     <div className="relative w-full flex justify-center items-center">
       <button
         className={cn(
-          "px-6 py-3 text-white font-bold text-lg rounded-full shadow-lg bg-gradient-to-r from-blue-500 to-purple-600 transition-all duration-300 transform hover:scale-105",
+          "px-[clamp(1rem, 5vw, 3rem)] py-[clamp(0.5rem, 2vw, 1.5rem)]",
+          "text-white font-bold rounded-full shadow-lg",
+          "bg-gradient-to-r from-blue-500 to-purple-600",
+          "transition-all duration-300 transform hover:scale-105",
           mainClassName
         )}
         {...rest}
@@ -66,7 +66,10 @@ const RotatingText = forwardRef((props, ref) => {
             animate={animate}
             exit={exit}
             transition={transition}
-            className="block text-center w-full" // Fixed width
+            className="block text-center w-full"
+            style={{
+              fontSize: "clamp(1.5rem, 4vw, 3rem)", // Dynamically scaling font size
+            }}
           >
             {texts[currentTextIndex]}
           </motion.span>
@@ -75,7 +78,6 @@ const RotatingText = forwardRef((props, ref) => {
     </div>
   );
 });
-
 
 RotatingText.displayName = "RotatingText";
 export default RotatingText;

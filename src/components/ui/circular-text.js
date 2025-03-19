@@ -8,14 +8,19 @@ const CircularText = ({
   imageSrc,
   imageSize = 80,
 }) => {
-  const [isMobile, setIsMobile] = useState(false);
+  const [scaleFactor, setScaleFactor] = useState(1); // Default scale at 100%
   const letters = Array.from(text);
   const controls = useAnimation();
-  const radius = 70; // Distance from center
+  const baseRadius = 70; // Base radius
 
   useEffect(() => {
     const updateSize = () => {
-      setIsMobile(window.innerWidth < 640);
+      const zoomLevel = window.devicePixelRatio; // Detects zoom
+      if (zoomLevel > 1.5) {
+        setScaleFactor(0.75); // Reduce to 75% size if zoom > 150%
+      } else {
+        setScaleFactor(1); // Keep normal size otherwise
+      }
     };
 
     updateSize();
@@ -24,51 +29,52 @@ const CircularText = ({
   }, []);
 
   useEffect(() => {
-    if (!isMobile) {
-      controls.start({
-        rotate: 360,
-        transition: {
-          from: 0,
-          to: 360,
-          ease: "linear",
-          duration: spinDuration,
-          repeat: Infinity,
-        },
-      });
-    }
-  }, [spinDuration, controls, isMobile]);
-
-  if (isMobile) return null; // Hide component on mobile screens
+    controls.start({
+      rotate: 360,
+      transition: {
+        ease: "linear",
+        duration: spinDuration,
+        repeat: Infinity,
+      },
+    });
+  }, [spinDuration, controls]);
 
   return (
-    <div className={`relative mx-auto w-[180px] h-[180px] ${className}`}>
-      {/* Fixed Centered Image */}
+    <div
+      className={`relative mx-auto ${className}`}
+      style={{
+        width: `${180 * scaleFactor}px`,
+        height: `${180 * scaleFactor}px`,
+      }}
+    >
+      {/* Centered Logo */}
       {imageSrc && (
         <img
           src={imageSrc}
-          alt="Center Logo"
+          alt="ACM Logo"
           className="absolute inset-0 m-auto"
-          style={{ width: imageSize, height: imageSize }}
+          style={{
+            width: `${imageSize * scaleFactor}px`,
+            height: `${imageSize * scaleFactor}px`,
+          }}
         />
       )}
 
-      {/* Rotating Text Container */}
-      <motion.div
-        animate={controls}
-        className="absolute inset-0 flex items-center justify-center"
-      >
+      {/* Rotating Text */}
+      <motion.div animate={controls} className="absolute inset-0 flex items-center justify-center">
         {letters.map((letter, i) => {
-          const angle = (360 / letters.length) * i; // Angle for each letter
+          const angle = (360 / letters.length) * i;
           const radian = (Math.PI / 180) * angle;
-          const x = Math.cos(radian) * radius;
-          const y = Math.sin(radian) * radius;
+          const x = Math.cos(radian) * baseRadius * scaleFactor;
+          const y = Math.sin(radian) * baseRadius * scaleFactor;
 
           return (
             <span
               key={i}
-              className="absolute text-lg font-bold"
+              className="absolute font-bold"
               style={{
-                transform: `translate(${x}px, ${y}px) rotate(${angle + 90}deg)`, 
+                fontSize: `${16 * scaleFactor}px`,
+                transform: `translate(${x}px, ${y}px) rotate(${angle + 90}deg)`,
                 transformOrigin: "center",
                 whiteSpace: "nowrap",
               }}
