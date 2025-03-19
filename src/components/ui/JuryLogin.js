@@ -1,13 +1,14 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { div } from 'framer-motion/client';
 
 const LoginPage = () => {
   const [accessKey, setAccessKey] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [showAnimation, setShowAnimation] = useState(false);
   const navigate = useNavigate();
-  const [errorMessage, setErrorMessage] = useState(""); // Error message state
+  const [errorMessage, setErrorMessage] = useState(""); 
   const inputRef = useRef(null);
 
   useEffect(() => {
@@ -88,7 +89,11 @@ const LoginPage = () => {
                 />
               </div>
             </div>
-
+            {errorMessage && (
+              <div className="px-3 py-2  text-sm text-red-300 bg-red-900 bg-opacity-50 border border-red-700 rounded-md shadow-md">
+                <p className="font-medium">Invalid Key</p>
+              </div>
+            )}
             <div className={`transition-all duration-700 delay-700 transform ${showAnimation ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
               <button
                 type="submit"
