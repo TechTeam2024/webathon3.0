@@ -6,7 +6,7 @@ function PrevEditions() {
   const cardData = [
     {
       id: 1,
-      image: "/poster1.svg",
+      image: "/poster1.jpg",
       title: "WEBATHON 1.0",
       description: [
         "WEBATHON 1.0",
@@ -20,7 +20,7 @@ function PrevEditions() {
     },
     {
       id: 2,
-      image: "/poster2.svg",
+      image: "/poster2.jpg",
       title: "Webathon 2.0",
       description: [
         "Webathon 2.0",
