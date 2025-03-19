@@ -193,14 +193,16 @@ const ContactForm = () => {
           </div>
         </div>
         {/* Animation content */}
-        <div className="w-full md:w-1/2 flex items-center justify-center bg-black">
-  <DotLottieReact
-    src="https://lottie.host/133d0d0c-c121-4133-9eb8-7061d353fb6a/NyDPUJIFpJ.lottie"
-    loop
-    autoplay
-    className="w-4/5 h-4/5 md:w-full md:h-full lg:w-[80%] lg:h-[80%]"
-  />
-</div>
+        {/* Animation content (hidden on small screens) */}
+        <div className="hidden md:flex w-full md:w-1/2 items-center justify-center bg-black">
+          <DotLottieReact
+            src="https://lottie.host/133d0d0c-c121-4133-9eb8-7061d353fb6a/NyDPUJIFpJ.lottie"
+            loop
+            autoplay
+            className="w-4/5 h-4/5 md:w-full md:h-full lg:w-[80%] lg:h-[80%]"
+          />
+        </div>
+
 
       </div>
     </div>
