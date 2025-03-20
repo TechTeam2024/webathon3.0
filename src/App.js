@@ -49,7 +49,7 @@ function Home() {
 
         <HeaderAnimation
           text="WEBATHON 3.0"
-          className="webathon-heading text-[clamp(2.5rem, 8vw, 6rem)] text-5xl sm:text-5xl md:text-6xl lg:text-[80px] xl:text-8xl w-full bg-black sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-webathon font-bold"
+          className={"webathon-heading text-[clamp(2.5rem, 8vw, 6rem)] text-5xl md:text-6xl lg:text-7xl xl:text-[110px] w-full bg-black font-webathon font-bold"}
           delay={100}
           animationFrom={{ opacity: 0, transform: "translate3d(0,20px,0)" }}
           animationTo={{ opacity: 1, transform: "translate3d(0,0,0)" }}
