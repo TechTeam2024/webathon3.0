@@ -9,9 +9,9 @@ const CircularText = ({
   imageSize = 80,
 }) => {
   const [scaleFactor, setScaleFactor] = useState(1); // Default scale at 100%
+  const [radius, setRadius] = useState(70); // State for base radius
   const letters = Array.from(text);
   const controls = useAnimation();
-  const baseRadius = 70; // Base radius
 
   useEffect(() => {
     const updateSize = () => {
@@ -39,9 +39,26 @@ const CircularText = ({
     });
   }, [spinDuration, controls]);
 
+  useEffect(() => {
+    const updateDimensions = () => {
+      const width = window.innerWidth;
+
+      if (width > 1300){
+        setRadius(45 * (width/1000));
+      }else{
+        setRadius(60)
+      }
+      ; // Adjust radius dynamically
+    };
+
+    updateDimensions();
+    window.addEventListener("resize", updateDimensions);
+    return () => window.removeEventListener("resize", updateDimensions);
+  }, []);
+
   return (
     <div
-      className={`relative  mx-auto ${className}`}
+      className={`relative mx-auto ${className}`}
       style={{
         width: `${180 * scaleFactor}px`,
         height: `${180 * scaleFactor}px`,
@@ -61,12 +78,12 @@ const CircularText = ({
       )}
 
       {/* Rotating Text */}
-      <motion.div animate={controls} className="absolute  inset-0 flex items-center justify-center">
+      <motion.div animate={controls} className="absolute inset-0 flex items-center justify-center">
         {letters.map((letter, i) => {
           const angle = (360 / letters.length) * i;
           const radian = (Math.PI / 180) * angle;
-          const x = Math.cos(radian) * baseRadius * scaleFactor;
-          const y = Math.sin(radian) * baseRadius * scaleFactor;
+          const x = Math.cos(radian) * radius * scaleFactor;
+          const y = Math.sin(radian) * radius * scaleFactor;
 
           return (
             <span

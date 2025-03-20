@@ -168,7 +168,7 @@ export default function DockNav({
           isHovered.set(0);
           mouseX.set(Infinity);
         }}
-        className={`${className} ${isMobile ? "fixed bottom-4 left-1/2 transform -translate-x-1/2 bg-[#1e1e1e] w-[90%] py-2 rounded-full" : "absolute top-5 left-1/2 transform -translate-x-1/2 w-[700px]"} 
+        className={`${className} ${isMobile ? "fixed bottom-4 left-1/2 transform -translate-x-1/2 bg-[#1e1e1e] w-[90%] py-2 rounded-md" : "absolute top-5 left-1/2 transform -translate-x-1/2 w-[700px]"} 
               flex items-center justify-center gap-4 rounded-2xl 
               border-neutral-700 border-2 pb-2 px-4`}
         style={{ height: panelHeight }}
@@ -194,7 +194,7 @@ export default function DockNav({
 
         {/* Register Button on Both Mobile & Fullscreen */}
         {registerButton && (
-          <button className="ml-4 px-4 py-2 bg-[#1e1e1e] border border-neutral-700 rounded-lg shadow-md hover:bg-[#292929] transition">
+          <button className="ml-4 px-4 py-2 bg-[#1e1e1e] border border-neutral-700 rounded-md shadow-md hover:bg-[#292929] transition">
             <ShinyText text="Register" speed={3} className="text-lg font-semibold" />
           </button>
         )}

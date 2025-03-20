@@ -66,7 +66,7 @@ export default function DockNav() {
   return (
     <div className="fixed nav-text nav-container top-5 left-1/2 transform -translate-x-1/2 z-40">
       <motion.div
-        className="flex items-center gap-6 px-6 py-3 font-tagline bg-black border border-gray-600 rounded-full shadow-md backdrop-blur-lg"
+        className="flex items-center gap-2.5 md:gap-6 px-5 md:px-6 py-3 font-tagline bg-black border border-gray-600 rounded-full shadow-md backdrop-blur-lg"
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4 }}
@@ -74,7 +74,7 @@ export default function DockNav() {
         {filteredItems.map((item, index) => (
           <button
             key={index}
-            className="relative text-white text-lg font-medium transition group"
+            className="relative text-white text-sm md:text-lg font-medium transition group"
             onClick={() => handleNavigation(item)}
           >
             {item.label}
@@ -86,7 +86,7 @@ export default function DockNav() {
         {/* Register Button (Always Visible) */}
         <button
            onClick={() => window.open("https://tinyurl.com/WebathonRegistrationForm", "_blank")}
-          className="ml-4 px-5 py-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-full font-semibold text-lg transition transform hover:scale-105 shadow-lg"
+          className="ml-4 px-5 py-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-full font-semibold text-sm md:text-lg transition transform hover:scale-105 shadow-lg"
         >
           Register
         </button>
