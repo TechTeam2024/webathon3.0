@@ -9,7 +9,7 @@ const TestimonialCarousel = () => {
 
   const testimonials = [
     {
-      name: "N. Mangathayaru",
+      name: "Dr. N. Mangatayaru",
       designation: "Head of department, IT",
       content: "I commend ACM VNRVJIET for creating such an excellent initiative that provides participants with the skills and confidence needed to excel in industry-level hackathons. I encourage students to utilise this opportunity to enhance their technical expertise."
     },

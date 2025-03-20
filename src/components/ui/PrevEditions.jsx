@@ -46,7 +46,7 @@ function PrevEditions() {
               alt={`Webathon ${card.version} Edition`}
               onError={(e) => {
                 console.error(`Error loading edition image: ${card.image}`);
-                e.target.src = "/fallback-edition.png"; // Provide a fallback image
+                e.target.src = "/fallback-edition.png"; 
               }}
             />
           </div>
